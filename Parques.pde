@@ -1,6 +1,6 @@
 PImage fondo;
 Ficha ficha;
-
+//hola
 void setup(){
   size(690,690);
   fondo = loadImage("FondoParques.jpg");
