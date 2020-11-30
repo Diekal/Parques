@@ -6,85 +6,38 @@ class Ficha{
   //4. fichas que hay
   //5. color de la ficha en la casilla
   
-  int [][] tablero = {{435,555,1,0,0},{435,525,0,0,0},{435,495,0,0,0},{435,465,0,0,0},{465,435,0,0,0},{495,435,0,0,0},{525,435,0,0,0},{555,435,1,0,0},{585,435,0,0,0},{615,435,0,0,0},{645,435,0,0,0},{675,435,0,0,0},{675,345,1,0,0},{675,255,0,0,0},{645,255,0,0,0},{615,255,0,0,0},{585,255,0,0,0},
-                      {555,255,1,0,0},{525,255,0,0,0},{495,255,0,0,0},{465,255,0,0,0},{435,225,0,0,0},{435,195,0,0,0},{435,165,0,0,0},{435,135,1,0,0},{435,105,0,0,0},{435,75,0,0,0},{435,45,0,0,0},{435,15,0,0,0},{345,15,1,0,0},{255,15,0,0,0},{255,45,0,0,0},{255,75,0,0,0},{255,105,0,0,0},
-                      {255,135,1,0,0},{255,165,0,0,0},{255,195,0,0,0},{255,225,0,0,0},{225,255,0,0,0},{195,255,0,0,0},{165,255,0,0,0},{135,255,1,0,0},{105,255,0,0,0},{75,255,0,0,0},{45,255,0,0,0},{15,255,0,0,0},{15,345,0,0,0},{15,435,0,0,0},{45,435,0,0,0},{75,435,0,0,0},{105,435,0,0,0},
-                      {135,435,1,0,0},{165,435,0,0,0},{195,435,0,0,0},{225,435,0,0,0},{255,465,0,0,0},{255,495,0,0,0},{255,525,0,0,0},{255,555,1,0,0},{255,585,0,0,0},{255,615,0,0,0},{255,645,0,0,0},{255,675,0,0,0},{345,675,0,0,0},{435,675,0,0,0},{435,645,0,0,0},{435,615,0,0,0},{435,585,0,0,0}
-};
-
- int[][] carcel; //Coordendas de la carcel
- color color_ficha; //Color ficha 
- int casilla_actual; //Casilla actual de la ficha
- int casillas_avanzadas; //Casillas avanzadas por la ficha
+  int[] carcel={0, 0};                                       //Coordendas de la carcel
+  int casilla_actual;                                        //Casilla actual de la ficha
+  int casillas_avanzadas;                                    //Casillas avanzadas por la ficha
+  color color_ficha;                                         //Color ficha 
+  Boolean ficha_en_carcel;                                   //Estado de la ficha (en la carcel o no)
   
-  Ficha(int jugador){
+  Ficha(int jugador, int carcelX, int carcelY){
     
-    carcel = new int [4][2];
-    casilla_actual = 0;
+    ficha_en_carcel = true;                                  //La ficha inicia en la carcel
+    color_ficha = colores[jugador-1];                        //Se le asigna el color del jugador
+    carcel[0]=carcelX;                                       //Guardamos las coordenadas de la carcel
+    carcel[1]=carcelY;
     
     //Asigna valores segun el jugador
     switch(jugador){
-      
       case 1:
-      color_ficha = #FFFF00; //Amarillo
-      
-      //Coordenadas de la carcel
-      carcel[0][0] = 550;
-      carcel[0][1] = 550;
-      carcel[1][0] = 620;
-      carcel[1][1] = 550;
-      carcel[2][0] = 550;
-      carcel[2][1] = 620;
-      carcel[3][0] = 620;
-      carcel[3][1] = 620;
-      
+      casilla_actual = 0;  //su salida
       break;
       
       case 2:
-      color_ficha = #0000FF; //Azul
-      
-      //Coordenadas de la carcel
-      carcel[0][0] = 550;
-      carcel[0][1] = 70;
-      carcel[1][0] = 620;
-      carcel[1][1] = 70;
-      carcel[2][0] = 550;
-      carcel[2][1] = 140;
-      carcel[3][0] = 620;
-      carcel[3][1] = 140;
-      
+      casilla_actual = 17;  //su salida
       break;
       
       case 3:
-      color_ficha = #FF0000; //Rojo
-      
-      //Coordenadas de la carcel
-      carcel[0][0] = 70;
-      carcel[0][1] = 70;
-      carcel[1][0] = 140;
-      carcel[1][1] = 70;
-      carcel[2][0] = 70;
-      carcel[2][1] = 140;
-      carcel[3][0] = 140;
-      carcel[3][1] = 140;
-      
+      casilla_actual = 34;  //su salida
       break;
       
       case 4:
-      color_ficha = #009245; //Verde
-      
-      //Coordenadas de la carcel
-      carcel[0][0] = 70;
-      carcel[0][1] = 550;
-      carcel[1][0] = 140;
-      carcel[1][1] = 550;
-      carcel[2][0] = 70;
-      carcel[2][1] = 620;
-      carcel[3][0] = 140;
-      carcel[3][1] = 620;
-      
+      casilla_actual = 51;  //su salida
       break;
     }
+    
   }
   
   void dibujar(){
@@ -93,9 +46,18 @@ class Ficha{
     strokeWeight(2);
     fill(color_ficha);
     
-    circle(tablero[casilla_actual][0],tablero[casilla_actual][1],30);
-    
+    if (ficha_en_carcel==false){                                                //Verificamos si la ficha está en juego o en la carcel y se dibuja
+      circle(tablero[casilla_actual][0],tablero[casilla_actual][1],30);
+    }else{
+      circle(carcel[0], carcel[1],30);
+    }
     pop();
+  }
+  
+  void mover(int espacios){
+    casilla_actual+= espacios;
+    casillas_avanzadas+=espacios;
+    
   }
   
   // CAMBIAR SEGUROS -- VANE 
