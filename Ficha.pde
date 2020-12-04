@@ -3,8 +3,9 @@ class Ficha {
   int[] carcel={0, 0};                                       //Coordendas de la carcel
   int casilla_actual;                                        //Casilla actual de la ficha
   int casillas_avanzadas;                                    //Casillas avanzadas por la ficha
+  int numero_jugador;
   color color_ficha;                                         //Color ficha 
-  Boolean ficha_en_carcel, bloqueo;                                   //Estado de la ficha (en la carcel o no) //Estado de casilla en bloqueo
+  Boolean ficha_en_carcel;                                   //Estado de la ficha (en la carcel o no) //Estado de casilla en bloqueo
 
   Ficha(int jugador, int carcelX, int carcelY) {
 
@@ -12,6 +13,7 @@ class Ficha {
     color_ficha = colores[jugador-1];                        //Se le asigna el color del jugador
     carcel[0]=carcelX;                                       //Guardamos las coordenadas de la carcel
     carcel[1]=carcelY;
+    numero_jugador = jugador;
 
     //Asigna valores segun el jugador
     switch(jugador) {
@@ -33,38 +35,32 @@ class Ficha {
     }
   }
 
-  void dibujar(int x) {
+  void dibujar(int x, int y) {
     push();
     stroke(0);
     strokeWeight(2);
     fill(color_ficha);
 
-    if (x == 0) {
+    if (x == 0 && y == 0) {
       if (ficha_en_carcel==false) {                                                //Verificamos si la ficha está en juego o en la carcel y se dibuja
         circle(tablero[casilla_actual%68][0], tablero[casilla_actual%68][1], 30);
       } else {
         circle(carcel[0], carcel[1], 30);
       }
     } else {
-      print("ok","");
-      circle(x, tablero[casilla_actual][1], 30);
+      circle(x, y, 30);
     }
     pop();
   }
 
+
   void mover(int espacios) {
-    if (tablero[casilla_actual%68][3] == 2) {
-      bloqueo = false;
-    }
-    tablero[casilla_actual%68][3] -= 1;
+    tablero[casilla_actual%68][4] -= 1;
+    tablero[casilla_actual%68][5] -= numero_jugador;
     casilla_actual += espacios;
     casillas_avanzadas+=espacios;
-    tablero[casilla_actual%68][3] += 1;
-    if (tablero[casilla_actual%68][3] == 2) {
-      bloqueo = true;
-      print(bloqueo,"");
-      dibujar(tablero[casilla_actual][0]+15);
-    }
+    tablero[casilla_actual%68][4] += 1;
+    tablero[casilla_actual%68][5] += numero_jugador;
   }
 
   // CAMBIAR SEGUROS -- VANE 
