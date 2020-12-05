@@ -94,7 +94,7 @@ class Jugador {
     if ((MouseX >= 715 && MouseX <= 805) && (MouseY >= 225 && MouseY <= 315) && MoverDado1 == true) {
       //Movemos la ficha si no hay bloqueo
       if (ficha_a_mover == 1) {
-        for (int i=0; i<=Dado1 ;i++){
+        for (int i=1; i<=Dado1 ;i++){
           if (tablero[(ficha1.casilla_actual+i)%68][3]==1){
             bloqueoAdelante=true;
           }
@@ -106,7 +106,7 @@ class Jugador {
         }
         
       } else if (ficha_a_mover == 2) {
-        for (int i=0; i<=Dado1 ;i++){
+        for (int i=1; i<=Dado1 ;i++){
           if (tablero[(ficha2.casilla_actual+i)%68][3]==1){
             bloqueoAdelante=true;
           }
@@ -117,7 +117,7 @@ class Jugador {
           MoverDado1 = false;
         }
       } else if (ficha_a_mover == 3) {
-        for (int i=0; i<=Dado1 ;i++){
+        for (int i=1; i<=Dado1 ;i++){
           if (tablero[(ficha3.casilla_actual+i)%68][3]==1){
             bloqueoAdelante=true;
           }
@@ -128,7 +128,7 @@ class Jugador {
           MoverDado1 = false;
         }
       } else if (ficha_a_mover == 4) {
-        for (int i=0; i<=Dado1 ;i++){
+        for (int i=1; i<=Dado1 ;i++){
           if (tablero[(ficha4.casilla_actual+i)%68][3]==1){
             bloqueoAdelante=true;
           }
@@ -143,7 +143,7 @@ class Jugador {
     } else if ((MouseX >= 835 && MouseX <= 925) && (MouseY >= 225 && MouseY <= 315)&& MoverDado2 == true) {
       //Movemos la ficha
       if (ficha_a_mover == 1) {
-        for (int i=0; i<=Dado2 ;i++){
+        for (int i=1; i<=Dado2 ;i++){
           if (tablero[(ficha1.casilla_actual+i)%68][3]==1){
             bloqueoAdelante=true;
           }
@@ -154,7 +154,7 @@ class Jugador {
           MoverDado2 = false;
         }
       } else if (ficha_a_mover == 2) {
-        for (int i=0; i<=Dado2 ;i++){
+        for (int i=1; i<=Dado2 ;i++){
           if (tablero[(ficha2.casilla_actual+i)%68][3]==1){
             bloqueoAdelante=true;
           }
@@ -165,7 +165,7 @@ class Jugador {
           MoverDado2 = false;
         }
       } else if (ficha_a_mover == 3) {
-        for (int i=0; i<=Dado2 ;i++){
+        for (int i=1; i<=Dado2 ;i++){
           if (tablero[(ficha3.casilla_actual+i)%68][3]==1){
             bloqueoAdelante=true;
           }
@@ -176,7 +176,7 @@ class Jugador {
           MoverDado2 = false;
         }
       } else if (ficha_a_mover == 4) {
-        for (int i=0; i<=Dado2 ;i++){
+        for (int i=1; i<=Dado2 ;i++){
           if (tablero[(ficha4.casilla_actual+i)%68][3]==1){
             bloqueoAdelante=true;
           }
