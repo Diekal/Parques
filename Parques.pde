@@ -14,9 +14,10 @@ int [][] tablero = {{435, 555, 1, 0, 0, 0}, {435, 525, 0, 0, 0, 0}, {435, 495, 0
 color[] colores = {#FFFF00, #0000FF, #FF0000, #009245};    //Colores disponibles (amarillo, azul, rojo, verde)
 PImage fondo;
 Jugador jugador1, jugador2, jugador3, jugador4; 
-int NumeroJugadores, Turno, Ronda, Dado1, Dado2;
+int NumeroJugadores, Turno, Ronda, Dado1, Dado2, pares;
 int seguro1, seguro2;
 String[] JugadorenTurno = {"Amarillo", "Azul", "Rojo", "Verde"};
+Boolean turnoActual, MoverDado1, MoverDado2;
 
 void setup() {
   NumeroJugadores = 4;
@@ -25,7 +26,10 @@ void setup() {
 
   Dado1= 0;                                          //Iniciamos los dados en 0
   Dado2= 0;
-
+  
+  MoverDado1=true;
+  MoverDado2=true;
+  turnoActual=true;
   if (NumeroJugadores>=2) {                            //creamos los jugadores necesarios
     jugador1 = new Jugador(1);
     jugador2 = new Jugador(2);
@@ -47,20 +51,35 @@ void draw() {
   jugador4.DibujarFichas();
 
   dibujarBloqueo();
-
+  
+  if (MoverDado1 == false){
+    fill(#804000);
+    square(730, 205, 90);
+  }
+  if (MoverDado2 == false){
+    fill(#804000);
+    square(855, 205, 90);
+  }
 
   textSize(64);                                       //Escribimos el valor de los dados
   fill(0, 0, 0);
   text( Dado1, 760, 270);
   text( Dado2, 880, 270);
-
-  textSize(60);                                       //Escribimos el color del jugador siguiente
-  fill(colores[Turno % NumeroJugadores]);
-  text(JugadorenTurno[Turno % NumeroJugadores], 720, 170);
+  if (turnoActual==true){
+    textSize(60);                                       //Escribimos el color del jugador siguiente
+    fill(colores[Turno % NumeroJugadores]);
+    text(JugadorenTurno[Turno % NumeroJugadores], 720, 170);
+  }
+  if (pares != 0){
+      textSize(30);                             
+      fill(0, 0, 0);
+      text( "Tira de nuevo", 760, 360);
+  }
 }
 
-void keyPressed() {
+void keyReleased() {
   if (key == ENTER) {
+    turnoActual=false;
     if (Turno % NumeroJugadores == 0 ) {                 //Con el módulo del turno entre los jugadores sabemos quien tira los dados 
       jugador1.TirarDados();
     } else if (Turno % NumeroJugadores == 1 ) {

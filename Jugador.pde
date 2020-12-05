@@ -3,8 +3,9 @@ class Jugador {
   Ficha ficha2;
   Ficha ficha3;
   Ficha ficha4;
-  int espacios, fichas_enCarcel, pares, ficha_a_mover, espacios_avanzados, jugador; //Dados //Fichas en la carcel //pares //ficha_a_mover //espacios avanzados por la ficha //jugador
-  int x1, x2, x3, x4, y1, y2, y3, y4;  
+  int espacios, fichas_enCarcel, ficha_a_mover, espacios_avanzados, jugador; //Dados //Fichas en la carcel //pares //ficha_a_mover //espacios avanzados por la ficha //jugador
+  int x1, x2, x3, x4, y1, y2, y3, y4; 
+  boolean bloqueoAdelante;
 
 
   Jugador(int numerodejugador) {
@@ -48,7 +49,156 @@ class Jugador {
     Dado1= (int)random(6) +1;
     Dado2= (int)random(6) +1;
     espacios = Dado1 + Dado2;
+    MoverDado1= true;
+    MoverDado2= true;
+    SacarCarcel();
 
+    //Verifica si se puede avanzar de turno
+    if (Dado1 == Dado2) {
+      pares ++;
+      if (pares == 3) {
+        turnoActual=true;
+        Turno ++;
+        pares = 0;
+      }
+    } else {
+      pares = 0;
+    }
+
+    if (fichas_enCarcel == 4 && pares == 0) {
+      turnoActual=true;
+      Turno ++;
+    }
+    
+    if(espacios==0 && pares==0){
+      turnoActual=true;
+      Turno ++;
+    }
+  }
+  //Elegir cuanto mover con cada ficha
+
+  void moverFicha(int MouseX, int MouseY) {
+    espacios_avanzados = 0;
+    //Verificamos la ficha que se esta seleccionando 
+    if ((MouseX >= (tablero[ficha1.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha1.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha1.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha1.casilla_actual%68][1]+15))) {
+      ficha_a_mover = 1;
+    } else if ((MouseX >= (tablero[ficha2.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha2.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha2.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha2.casilla_actual%68][1]+15))) {
+      ficha_a_mover = 2;
+    } else if ((MouseX >= (tablero[ficha3.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha3.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha3.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha3.casilla_actual%68][1]+15))) {
+      ficha_a_mover = 3;
+    } else if ((MouseX >= (tablero[ficha4.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha4.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha4.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha4.casilla_actual%68][1]+15))) {
+      ficha_a_mover = 4;
+    } 
+
+    bloqueoAdelante= false;
+    if ((MouseX >= 715 && MouseX <= 805) && (MouseY >= 225 && MouseY <= 315) && MoverDado1 == true) {
+      //Movemos la ficha si no hay bloqueo
+      if (ficha_a_mover == 1) {
+        for (int i=0; i<=Dado1 ;i++){
+          if (tablero[(ficha1.casilla_actual+i)%68][3]==1){
+            bloqueoAdelante=true;
+          }
+        }
+        if (bloqueoAdelante== false){
+          ficha1.mover(Dado1); 
+          espacios = espacios - Dado1;
+          MoverDado1 = false;
+        }
+        
+      } else if (ficha_a_mover == 2) {
+        for (int i=0; i<=Dado1 ;i++){
+          if (tablero[(ficha2.casilla_actual+i)%68][3]==1){
+            bloqueoAdelante=true;
+          }
+        }
+        if (bloqueoAdelante== false){
+          ficha2.mover(Dado1);
+          espacios = espacios - Dado1;
+          MoverDado1 = false;
+        }
+      } else if (ficha_a_mover == 3) {
+        for (int i=0; i<=Dado1 ;i++){
+          if (tablero[(ficha3.casilla_actual+i)%68][3]==1){
+            bloqueoAdelante=true;
+          }
+        }
+        if (bloqueoAdelante== false){
+          ficha3.mover(Dado1);  
+          espacios = espacios - Dado1;
+          MoverDado1 = false;
+        }
+      } else if (ficha_a_mover == 4) {
+        for (int i=0; i<=Dado1 ;i++){
+          if (tablero[(ficha4.casilla_actual+i)%68][3]==1){
+            bloqueoAdelante=true;
+          }
+        }
+        if (bloqueoAdelante== false){
+          ficha4.mover(Dado1);  
+          espacios = espacios - Dado1;
+          MoverDado1 = false;
+        }
+      }
+      
+    } else if ((MouseX >= 835 && MouseX <= 925) && (MouseY >= 225 && MouseY <= 315)&& MoverDado2 == true) {
+      //Movemos la ficha
+      if (ficha_a_mover == 1) {
+        for (int i=0; i<=Dado2 ;i++){
+          if (tablero[(ficha1.casilla_actual+i)%68][3]==1){
+            bloqueoAdelante=true;
+          }
+        }
+        if (bloqueoAdelante== false){
+          ficha1.mover(Dado2);  
+          espacios = espacios - Dado2;
+          MoverDado2 = false;
+        }
+      } else if (ficha_a_mover == 2) {
+        for (int i=0; i<=Dado2 ;i++){
+          if (tablero[(ficha2.casilla_actual+i)%68][3]==1){
+            bloqueoAdelante=true;
+          }
+        }
+        if (bloqueoAdelante== false){
+          ficha2.mover(Dado2); 
+          espacios = espacios - Dado2;
+          MoverDado2 = false;
+        }
+      } else if (ficha_a_mover == 3) {
+        for (int i=0; i<=Dado2 ;i++){
+          if (tablero[(ficha3.casilla_actual+i)%68][3]==1){
+            bloqueoAdelante=true;
+          }
+        }
+        if (bloqueoAdelante== false){
+          ficha3.mover(Dado2); 
+          espacios = espacios - Dado2;
+          MoverDado2 = false;
+        }
+      } else if (ficha_a_mover == 4) {
+        for (int i=0; i<=Dado2 ;i++){
+          if (tablero[(ficha4.casilla_actual+i)%68][3]==1){
+            bloqueoAdelante=true;
+          }
+        }
+        if (bloqueoAdelante== false){
+          ficha4.mover(Dado2); 
+          espacios = espacios - Dado2;
+          MoverDado2 = false;
+        }
+      }
+      
+    }
+
+    //verificamos si se puede cambiar de turno
+    if (espacios == 0 && pares == 0) {
+      turnoActual=true;
+      Turno++;
+    }
+  }
+
+  void SacarCarcel(){
+    
     //Comprobamos el número de fichas en la carcel y sacamos alguna si se puede
     fichas_enCarcel = 0;
     if (ficha1.ficha_en_carcel == true) {
@@ -64,156 +214,105 @@ class Jugador {
       fichas_enCarcel ++;
     }
 
-    //Sacamos fichas de la carcel
-    if (Dado1 == 5) {
-      if (fichas_enCarcel == 4) {
-        ficha1.ficha_en_carcel = false;
-        tablero[ficha1.casilla_actual][4] = 1;
-        tablero[ficha1.casilla_actual][5] += jugador;
-        fichas_enCarcel --;
-        espacios = espacios - 5;
-      } else if (fichas_enCarcel == 3) {
-        ficha2.ficha_en_carcel = false;
-        tablero[ficha2.casilla_actual][4] = 1;
-        tablero[ficha2.casilla_actual][5] += jugador;
-        fichas_enCarcel --;
-        espacios = espacios - 5;
-      } else if (fichas_enCarcel == 2) {
-        ficha3.ficha_en_carcel = false;
-        tablero[ficha3.casilla_actual][4] = 1;
-        tablero[ficha3.casilla_actual][5] += jugador;
-        fichas_enCarcel --;
-        espacios = espacios - 5;
-      } else if (fichas_enCarcel == 1) {
-        ficha4.ficha_en_carcel = false;
-        tablero[ficha4.casilla_actual][4] = 1;
-        tablero[ficha4.casilla_actual][5] += jugador;
-        fichas_enCarcel --;
-        espacios = espacios - 5;
+    //Sacamos fichas de la carcel si en la casilla hay menos de 2
+    if (tablero[ficha1.casilla_actual%68][4]<2){  
+      if (Dado1 == 5) {
+        if (fichas_enCarcel == 4) {
+          ficha1.ficha_en_carcel = false;
+          tablero[ficha1.casilla_actual%68][4] += 1;
+          tablero[ficha1.casilla_actual%68][5] += jugador;
+          fichas_enCarcel --;
+          espacios = espacios - 5;
+          MoverDado1= false;
+        } else if (fichas_enCarcel == 3) {
+          ficha2.ficha_en_carcel = false;
+          tablero[ficha2.casilla_actual%68][4] += 1;
+          tablero[ficha2.casilla_actual%68][5] += jugador;
+          fichas_enCarcel --;
+          espacios = espacios - 5;
+          MoverDado1= false;
+        } else if (fichas_enCarcel == 2) {
+          ficha3.ficha_en_carcel = false;
+          tablero[ficha3.casilla_actual%68][4] += 1;
+          tablero[ficha3.casilla_actual%68][5] += jugador;
+          fichas_enCarcel --;
+          espacios = espacios - 5;
+          MoverDado1= false;
+        } else if (fichas_enCarcel == 1) {
+          ficha4.ficha_en_carcel = false;
+          tablero[ficha4.casilla_actual%68][4] += 1;
+          tablero[ficha4.casilla_actual%68][5] += jugador;
+          fichas_enCarcel --;
+          espacios = espacios - 5;
+          MoverDado1= false;
+        }
       }
-    }
-    if (Dado2 == 5) {
-      if (fichas_enCarcel == 4) {
-        ficha1.ficha_en_carcel = false;
-        tablero[ficha1.casilla_actual][4] = 1;
-        tablero[ficha1.casilla_actual][5] += jugador;
-        fichas_enCarcel --;
-        espacios = espacios - 5;
-      } else if (fichas_enCarcel == 3) {
-        ficha2.ficha_en_carcel = false;
-        tablero[ficha2.casilla_actual][4] = 1;
-        tablero[ficha2.casilla_actual][5] += jugador;
-        fichas_enCarcel --;
-        espacios = espacios - 5;
-      } else if (fichas_enCarcel == 2) {
-        ficha3.ficha_en_carcel = false;
-        tablero[ficha3.casilla_actual][4] = 1;
-        tablero[ficha3.casilla_actual][5] += jugador;
-        fichas_enCarcel --;
-        espacios = espacios - 5;
-      } else if (fichas_enCarcel == 1) {
-        ficha4.ficha_en_carcel = false;
-        tablero[ficha4.casilla_actual][4] = 1;
-        tablero[ficha4.casilla_actual][5] += jugador;
-        fichas_enCarcel --;
-        espacios = espacios - 5;
+      if (Dado2 == 5) {
+        if (fichas_enCarcel == 4) {
+          ficha1.ficha_en_carcel = false;
+          tablero[ficha1.casilla_actual%68][4] += 1;
+          tablero[ficha1.casilla_actual%68][5] += jugador;
+          fichas_enCarcel --;
+          espacios = espacios - 5;
+          MoverDado2= false;
+        } else if (fichas_enCarcel == 3) {
+          ficha2.ficha_en_carcel = false;
+          tablero[ficha2.casilla_actual%68][4] += 1;
+          tablero[ficha2.casilla_actual%68][5] += jugador;
+          fichas_enCarcel --;
+          espacios = espacios - 5;
+          MoverDado2= false;
+        } else if (fichas_enCarcel == 2) {
+          ficha3.ficha_en_carcel = false;
+          tablero[ficha3.casilla_actual%68][4] += 1;
+          tablero[ficha3.casilla_actual%68][5] += jugador;
+          fichas_enCarcel --;
+          espacios = espacios - 5;
+          MoverDado2= false;
+        } else if (fichas_enCarcel == 1) {
+          ficha4.ficha_en_carcel = false;
+          tablero[ficha4.casilla_actual%68][4] += 1;
+          tablero[ficha4.casilla_actual%68][5] += jugador;
+          fichas_enCarcel --;
+          espacios = espacios - 5;
+          MoverDado2= false;
+        }
       }
-    }
-    if (espacios == 5) {
-      if (fichas_enCarcel == 4) {
-        ficha1.ficha_en_carcel = false;
-        tablero[ficha1.casilla_actual][4] = 1;
-        tablero[ficha1.casilla_actual][5] += jugador;
-        fichas_enCarcel --;
-        espacios = espacios - 5;
-      } else if (fichas_enCarcel == 3) {
-        ficha2.ficha_en_carcel = false;
-        tablero[ficha2.casilla_actual][4] = 1;
-        tablero[ficha2.casilla_actual][5] += jugador;
-        fichas_enCarcel --;
-        espacios = espacios - 5;
-      } else if (fichas_enCarcel == 2) {
-        ficha3.ficha_en_carcel = false;
-        tablero[ficha3.casilla_actual][4] = 1;
-        tablero[ficha3.casilla_actual][5] += jugador;
-        fichas_enCarcel --;
-        espacios = espacios - 5;
-      } else if (fichas_enCarcel == 1) {
-        ficha4.ficha_en_carcel = false;
-        tablero[ficha4.casilla_actual][4] = 1;
-        tablero[ficha4.casilla_actual][5] += jugador;
-        fichas_enCarcel --;
-        espacios = espacios - 5;
+      if (espacios == 5) {
+        if (fichas_enCarcel == 4) {
+          ficha1.ficha_en_carcel = false;
+          tablero[ficha1.casilla_actual%68][4] += 1;
+          tablero[ficha1.casilla_actual%68][5] += jugador;
+          fichas_enCarcel --;
+          espacios = espacios - 5;
+          MoverDado1= false;
+          MoverDado2= false;
+        } else if (fichas_enCarcel == 3) {
+          ficha2.ficha_en_carcel = false;
+          tablero[ficha2.casilla_actual%68][4] += 1;
+          tablero[ficha2.casilla_actual%68][5] += jugador;
+          fichas_enCarcel --;
+          espacios = espacios - 5;
+          MoverDado1= false;
+          MoverDado2= false;
+        } else if (fichas_enCarcel == 2) {
+          ficha3.ficha_en_carcel = false;
+          tablero[ficha3.casilla_actual%68][4] += 1;
+          tablero[ficha3.casilla_actual%68][5] += jugador;
+          fichas_enCarcel --;
+          espacios = espacios - 5;
+          MoverDado1= false;
+          MoverDado2= false;
+        } else if (fichas_enCarcel == 1) {
+          ficha4.ficha_en_carcel = false;
+          tablero[ficha4.casilla_actual%68][4] += 1;
+          tablero[ficha4.casilla_actual%68][5] += jugador;
+          fichas_enCarcel --;
+          espacios = espacios - 5;
+          MoverDado1= false;
+          MoverDado2= false;
+        }
       }
-    }
-
-    delay(100);
-
-
-    //Verifica si se puede avanzar de turno
-    if (Dado1 == Dado2) {
-      pares ++;
-      if (pares == 3) {
-        Turno ++;
-        pares = 0;
-      }
-    } else {
-      pares = 0;
-    }
-
-    if (fichas_enCarcel == 4 && pares == 0) {
-      Turno ++;
-    }
-    
-    if(espacios==0 && pares==0){
-      Turno ++;
-    }
-  }
-  //Elegir cuanto mover con cada ficha
-
-  void moverFicha(int MouseX, int MouseY) {
-    espacios_avanzados = 0;
-    //Verificamos la ficha que se esta seleccionando
-    if ((MouseX >= (tablero[ficha1.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha1.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha1.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha1.casilla_actual%68][1]+15))) {
-      ficha_a_mover = 1;
-    } else if ((MouseX >= (tablero[ficha2.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha2.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha2.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha2.casilla_actual%68][1]+15))) {
-      ficha_a_mover = 2;
-    } else if ((MouseX >= (tablero[ficha3.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha3.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha3.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha3.casilla_actual%68][1]+15))) {
-      ficha_a_mover = 3;
-    } else if ((MouseX >= (tablero[ficha4.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha4.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha4.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha4.casilla_actual%68][1]+15))) {
-      ficha_a_mover = 4;
-    } 
-
-
-    if ((MouseX >= 715 && MouseX <= 805) && (MouseY >= 225 && MouseY <= 315)) {
-      //Movemos la ficha
-      if (ficha_a_mover == 1) {
-        ficha1.mover(Dado1);
-      } else if (ficha_a_mover == 2) {
-        ficha2.mover(Dado1);
-      } else if (ficha_a_mover == 3) {
-        ficha3.mover(Dado1);
-      } else if (ficha_a_mover == 4) {
-        ficha4.mover(Dado1);
-      };
-      espacios = espacios - Dado1;
-    } else if ((MouseX >= 835 && MouseX <= 925) && (MouseY >= 225 && MouseY <= 315)) {
-      //Movemos la ficha
-      if (ficha_a_mover == 1) {
-        ficha1.mover(Dado2);
-      } else if (ficha_a_mover == 2) {
-        ficha2.mover(Dado2);
-      } else if (ficha_a_mover == 3) {
-        ficha3.mover(Dado2);
-      } else if (ficha_a_mover == 4) {
-        ficha4.mover(Dado2);
-      }
-      espacios = espacios - Dado2;
-    }
-
-    //verificamos si se puede cambiar de turno
-    if (espacios == 0 && pares == 0) {
-      Turno++;
     }
   }
 
