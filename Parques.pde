@@ -27,7 +27,7 @@ void setup() {
 
   Dado1= 0;                                          //Iniciamos los dados en 0
   Dado2= 0;
-  
+
   MoverDado1=true;
   MoverDado2=true;
   turnoActual=true;
@@ -52,12 +52,12 @@ void draw() {
   jugador4.DibujarFichas();
 
   dibujarBloqueo();
-  
-  if (MoverDado1 == false){
+
+  if (MoverDado1 == false) {
     fill(#804000);
     square(730, 205, 90);
   }
-  if (MoverDado2 == false){
+  if (MoverDado2 == false) {
     fill(#804000);
     square(855, 205, 90);
   }
@@ -66,15 +66,15 @@ void draw() {
   fill(0, 0, 0);
   text( Dado1, 760, 270);
   text( Dado2, 880, 270);
-  if (turnoActual==true){
+  if (turnoActual==true) {
     textSize(60);                                       //Escribimos el color del jugador siguiente
     fill(colores[Turno % NumeroJugadores]);
     text(JugadorenTurno[Turno % NumeroJugadores], 720, 170);
   }
-  if (pares != 0){
-      textSize(30);                             
-      fill(0, 0, 0);
-      text( "Tira de nuevo", 760, 360);
+  if (pares != 0) {
+    textSize(30);                             
+    fill(0, 0, 0);
+    text( "Tira de nuevo", 760, 360);
   }
 }
 
@@ -108,7 +108,7 @@ void mouseReleased() {
 void dibujarBloqueo() {
   for (int n = 0; n < 68; n++) {
     if (tablero[n][3] == 1) {
-      
+
       push();
       noStroke();
       fill(#93663A);
@@ -126,17 +126,31 @@ void dibujarBloqueo() {
       //Esquinas
       else if (n==3 || n==21) {
         rect(tablero[n][0]-45, tablero[n][1]-15, 60, 30);
-        if(n==3){
-          triangle(tablero[n][0]+15,tablero[n][1]-15,tablero[n][0]+15,tablero[n][1]+15,tablero[n][0]+45,tablero[n][1]+15);
-        } else if(n==21){
-          triangle(tablero[n][0]+15,tablero[n][1]-15,tablero[n][0]+45,tablero[n][1]-15,tablero[n][0]+15,tablero[n][1]+15);
+        if (n==3) {
+          triangle(tablero[n][0]+15, tablero[n][1]-15, tablero[n][0]+15, tablero[n][1]+15, tablero[n][0]+45, tablero[n][1]+15);
+        } else if (n==21) {
+          triangle(tablero[n][0]+15, tablero[n][1]-15, tablero[n][0]+45, tablero[n][1]-15, tablero[n][0]+15, tablero[n][1]+15);
         }
-      } else if(n==39 || n==55){
-        rect(tablero[n][0]+45, tablero[n][1]-15, 60, 30);
-        if(n==39){
-          triangle(tablero[n][0]-15,tablero[n][1]+15,tablero[n][0]-15,tablero[n][1]-15,tablero[n][0]-45,tablero[n][1]-15);
-        } else if(n==55){
-          triangle(tablero[n][0]-15,tablero[n][1]-15,tablero[n][0]-15,tablero[n][1]+15,tablero[n][0]-45,tablero[n][1]+15);
+      } else if (n==37 || n==55) {
+        rect(tablero[n][0]-15, tablero[n][1]-15, 60, 30);
+        if (n==39) {
+          triangle(tablero[n][0]-15, tablero[n][1]+15, tablero[n][0]-15, tablero[n][1]-15, tablero[n][0]-45, tablero[n][1]-15);
+        } else if (n==55) {
+          triangle(tablero[n][0]-15, tablero[n][1]-15, tablero[n][0]-15, tablero[n][1]+15, tablero[n][0]-45, tablero[n][1]+15);
+        }
+      } else if (n==4 || n==54) {
+        rect(tablero[n][0]-15, tablero[n][1]-45, 30, 60);
+        if(n==4){
+          triangle(tablero[n][0]+15, tablero[n][1]+15, tablero[n][0]-15, tablero[n][1]+15, tablero[n][0]+15, tablero[n][1]+45);
+        } else if (n==54){
+          triangle(tablero[n][0]+15, tablero[n][1]+15, tablero[n][0]-15, tablero[n][1]+15, tablero[n][0]-15, tablero[n][1]+45);
+        }
+      } else if (n==20 || n==38) {
+        rect(tablero[n][0]-15, tablero[n][1]-15, 30, 60);
+        if(n==20){
+          triangle(tablero[n][0]-15, tablero[n][1]-15, tablero[n][0]+15, tablero[n][1]-15, tablero[n][0]+15, tablero[n][1]-45);
+        } if(n==38){
+          triangle(tablero[n][0]-15, tablero[n][1]-15, tablero[n][0]+15, tablero[n][1]-15, tablero[n][0]-15, tablero[n][1]-45);
         }
       }
       pop();
