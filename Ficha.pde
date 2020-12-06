@@ -56,11 +56,13 @@ class Ficha {
 
   void mover(int espacios) {
     tablero[casilla_actual%68][4] -= 1;
-    tablero[casilla_actual%68][5] -= numero_jugador;
+    if (tablero[casilla_actual%68][4]==0 ){
+      tablero[casilla_actual%68][5] = 0;  
+    }
     casilla_actual += espacios;
     casillas_avanzadas+=espacios;
     tablero[casilla_actual%68][4] += 1;
-    tablero[casilla_actual%68][5] += numero_jugador;
+    tablero[casilla_actual%68][5] = numero_jugador;
   }
 
   // CAMBIAR SEGUROS -- VANE 
