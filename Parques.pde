@@ -15,7 +15,7 @@ int [][] tablero = {{435, 555, 1, 0, 0, 0}, {435, 525, 0, 0, 0, 0}, {435, 495, 0
 color[] colores = {#FFFF00, #0000FF, #FF0000, #009245};    //Colores disponibles (amarillo, azul, rojo, verde)
 PImage fondo;
 Jugador jugador1, jugador2, jugador3, jugador4; 
-int NumeroJugadores, Turno, Ronda, Dado1, Dado2, pares;
+int NumeroJugadores, Turno, Dado1, Dado2, pares;
 int seguro1, seguro2;
 String[] JugadorenTurno = {"Amarillo", "Azul", "Rojo", "Verde"};
 Boolean turnoActual, MoverDado1, MoverDado2;
@@ -23,11 +23,14 @@ Boolean turnoActual, MoverDado1, MoverDado2;
 void setup() {
   NumeroJugadores = 4;
   size(990, 690);
-  fondo = loadImage("TableroParques3.jpg");
+  fondo = loadImage("TableroParques.jpg");
 
   Dado1= 0;                                          //Iniciamos los dados en 0
   Dado2= 0;
-
+  
+  seguro1=7;
+  seguro2=12;
+  
   MoverDado1=true;
   MoverDado2=true;
   turnoActual=true;
@@ -52,33 +55,34 @@ void draw() {
   jugador4.DibujarFichas();
 
   dibujarBloqueo();
+  Seguros();
 
   if (MoverDado1 == false) {
     fill(#804000);
-    square(730, 205, 90);
+    square(732, 55, 90);
   }
   if (MoverDado2 == false) {
     fill(#804000);
-    square(855, 205, 90);
+    square(857, 55, 90);
   }
 
   textSize(64);                                       //Escribimos el valor de los dados
   fill(0, 0, 0);
-  text( Dado1, 760, 270);
-  text( Dado2, 880, 270);
+  text( Dado1, 760, 120);
+  text( Dado2, 880,120);
   if (turnoActual==true) {
     textSize(60);                                       //Escribimos el color del jugador siguiente
     fill(colores[Turno % NumeroJugadores]);
-    text(JugadorenTurno[Turno % NumeroJugadores], 720, 170);
+    text(JugadorenTurno[Turno % NumeroJugadores], 720, 430);
   }
   if (pares != 0) {
     textSize(30);                             
     fill(0, 0, 0);
-    text( "Tira de nuevo", 760, 360);
+    text( "Tira de nuevo", 750, 200);
   }
 }
 
-void keyReleased() {
+void keyPressed() {
   if (key == ENTER) {
     turnoActual=false;
     if (Turno % NumeroJugadores == 0 ) {                 //Con el módulo del turno entre los jugadores sabemos quien tira los dados 
