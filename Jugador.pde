@@ -95,7 +95,7 @@ class Jugador {
     } 
 
     bloqueoAdelante= false;
-    if ((MouseX >= 715 && MouseX <= 805) && (MouseY >= 225 && MouseY <= 315) && MoverDado1 == true) {
+    if ((MouseX >= 715 && MouseX <= 822) && (MouseY >= 55 && MouseY <= 145) && MoverDado1 == true) {
       //Movemos la ficha si no hay bloqueo
       if (ficha_a_mover == 1) {
         for (int i=1; i<=Dado1 ;i++){
@@ -148,7 +148,7 @@ class Jugador {
         }
       }
       
-    } else if ((MouseX >= 835 && MouseX <= 925) && (MouseY >= 225 && MouseY <= 315)&& MoverDado2 == true) {
+    } else if ((MouseX >= 857 && MouseX <= 947) && (MouseY >= 55 && MouseY <= 145)&& MoverDado2 == true) {
       //Movemos la ficha
       if (ficha_a_mover == 1) {
         for (int i=1; i<=Dado2 ;i++){
@@ -229,28 +229,28 @@ class Jugador {
     //Sacamos fichas de la carcel si en la entrada hay menos de 2
     if (tablero[entrada][4]<2){  
       if (Dado1 == 5) {
-        if (fichas_enCarcel == 4) {
+        if (ficha1.ficha_en_carcel == true) {
           ficha1.ficha_en_carcel = false;
           tablero[entrada][4] += 1;
           tablero[entrada][5] += jugador;
           fichas_enCarcel --;
           espacios = espacios - 5;
           MoverDado1= false;
-        } else if (fichas_enCarcel == 3) {
+        } else if (ficha2.ficha_en_carcel == true) {
           ficha2.ficha_en_carcel = false;
           tablero[entrada][4] += 1;
           tablero[entrada][5] += jugador;
           fichas_enCarcel --;
           espacios = espacios - 5;
           MoverDado1= false;
-        } else if (fichas_enCarcel == 2) {
+        } else if (ficha3.ficha_en_carcel == true) {
           ficha3.ficha_en_carcel = false;
           tablero[entrada][4] += 1;
           tablero[entrada][5] += jugador;
           fichas_enCarcel --;
           espacios = espacios - 5;
           MoverDado1= false;
-        } else if (fichas_enCarcel == 1) {
+        } else if (ficha4.ficha_en_carcel == true) {
           ficha4.ficha_en_carcel = false;
           tablero[entrada][4] += 1;
           tablero[entrada][5] += jugador;
@@ -260,28 +260,28 @@ class Jugador {
         }
       }
       if (Dado2 == 5) {
-        if (fichas_enCarcel == 4) {
+        if (ficha1.ficha_en_carcel == true) {
           ficha1.ficha_en_carcel = false;
           tablero[entrada][4] += 1;
           tablero[entrada][5] += jugador;
           fichas_enCarcel --;
           espacios = espacios - 5;
           MoverDado2= false;
-        } else if (fichas_enCarcel == 3) {
+        } else if (ficha2.ficha_en_carcel == true) {
           ficha2.ficha_en_carcel = false;
           tablero[entrada][4] += 1;
           tablero[entrada][5] += jugador;
           fichas_enCarcel --;
           espacios = espacios - 5;
           MoverDado2= false;
-        } else if (fichas_enCarcel == 2) {
+        } else if (ficha3.ficha_en_carcel == true) {
           ficha3.ficha_en_carcel = false;
           tablero[entrada][4] += 1;
           tablero[entrada][5] += jugador;
           fichas_enCarcel --;
           espacios = espacios - 5;
           MoverDado2= false;
-        } else if (fichas_enCarcel == 1) {
+        } else if (ficha4.ficha_en_carcel == true) {
           ficha4.ficha_en_carcel = false;
           tablero[ficha4.casilla_actual%68][4] += 1;
           tablero[ficha4.casilla_actual%68][5] += jugador;
@@ -291,7 +291,7 @@ class Jugador {
         }
       }
       if (espacios == 5) {
-        if (fichas_enCarcel == 4) {
+        if (ficha1.ficha_en_carcel == true) {
           ficha1.ficha_en_carcel = false;
           tablero[entrada][4] += 1;
           tablero[entrada][5] += jugador;
@@ -299,7 +299,7 @@ class Jugador {
           espacios = espacios - 5;
           MoverDado1= false;
           MoverDado2= false;
-        } else if (fichas_enCarcel == 3) {
+        } else if (ficha2.ficha_en_carcel == true) {
           ficha2.ficha_en_carcel = false;
           tablero[entrada][4] += 1;
           tablero[entrada][5] += jugador;
@@ -307,7 +307,7 @@ class Jugador {
           espacios = espacios - 5;
           MoverDado1= false;
           MoverDado2= false;
-        } else if (fichas_enCarcel == 2) {
+        } else if (ficha3.ficha_en_carcel == true) {
           ficha3.ficha_en_carcel = false;
           tablero[entrada][4] += 1;
           tablero[entrada][5] += jugador;
@@ -315,7 +315,7 @@ class Jugador {
           espacios = espacios - 5;
           MoverDado1= false;
           MoverDado2= false;
-        } else if (fichas_enCarcel == 1) {
+        } else if (ficha4.ficha_en_carcel == true) {
           ficha4.ficha_en_carcel = false;
           tablero[entrada][4] += 1;
           tablero[entrada][5] += jugador;
@@ -456,7 +456,9 @@ class Jugador {
     if (tablero[(ficha.casilla_actual+Dado)%68][2]==1 && tablero[(ficha.casilla_actual+Dado)%68][4]==1){                 //si es casilla segura hay bloqueo
       tablero[(ficha.casilla_actual+Dado)%68][3]=1;
     } else if (tablero[(ficha.casilla_actual+Dado)%68][2]==0 && tablero[(ficha.casilla_actual+Dado)%68][4]==1){          // si no es segura se la come
-      
+      System.out.println(tablero[(ficha.casilla_actual+Dado)%68][5]);
+      System.out.println(ficha.numero_jugador);
+      System.out.println("-");
       if (tablero[(ficha.casilla_actual+Dado)%68][5]==1 && ficha.numero_jugador!=1){
         if (jugador1.ficha1.casilla_actual == ficha.casilla_actual+Dado){
           jugador1.ficha1.ficha_en_carcel = true;
