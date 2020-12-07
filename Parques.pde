@@ -18,7 +18,7 @@ Jugador jugador1, jugador2, jugador3, jugador4;
 int NumeroJugadores, Turno, Dado1, Dado2, pares;
 int seguro1, seguro2;
 String[] JugadorenTurno = {"Amarillo", "Azul", "Rojo", "Verde"};
-Boolean turnoActual, MoverDado1, MoverDado2;
+Boolean turnoActual, MoverDado1, MoverDado2, avanzarComer;
 
 void setup() {
   NumeroJugadores = 4;
@@ -28,8 +28,8 @@ void setup() {
   Dado1= 0;                                          //Iniciamos los dados en 0
   Dado2= 0;
   
-  //seguro1=7;
-  //seguro2=12;
+  seguro1=7;
+  seguro2=12;
   
   MoverDado1=true;
   MoverDado2=true;
@@ -44,6 +44,8 @@ void setup() {
   if (NumeroJugadores==4) {
     jugador4 = new Jugador(4);
   }
+  
+  avanzarComer = false;
 }
 
 void draw() {
@@ -54,18 +56,10 @@ void draw() {
   jugador2.DibujarFichas();
   jugador3.DibujarFichas();
   jugador4.DibujarFichas();
-<<<<<<< HEAD
-
-  dibujarBloqueo();
-  //Seguros();
-  
-
-=======
   
   Seguros();
   dibujarBloqueo();
   
->>>>>>> 152b5778fc777730160023f0b2b39aa660fb9434
   if (MoverDado1 == false) {
     fill(#804000);
     square(732, 55, 90);
@@ -73,6 +67,18 @@ void draw() {
   if (MoverDado2 == false) {
     fill(#804000);
     square(857, 55, 90);
+  }
+  
+  if (avanzarComer == true){
+    push();
+    strokeWeight(2);
+    fill(#ffffff);
+    rect(732, 177, 215, 80);
+    fill(0, 0, 0);
+    textSize(20);
+    text("Selecciona una ficha", 740, 210);
+    text("y avanza 20 espacios", 740, 230);
+    pop();
   }
 
   textSize(64);                                       //Escribimos el valor de los dados
