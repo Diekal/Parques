@@ -2,6 +2,9 @@
 ____
 
 ## 1. Introducción
+
+<p align="center"><img src="tablero.jpg" width="10%"></p>
+
 El parqués es un juego de mesa de origen colombiano, derivado del parchís español. Este juego permite de 2 a 4 jugadores y se juega con un tablero como el mostrado anteriormente, en el cual se ubican 4 fichas por jugador del color correspondiente. El objetivo de este juego es recorrer todo el tablero en sentido antihorario con cada una de tus fichas, hasta llevarlas al centro de este y coronarlas, mientras que en el recorrido se come las fichas de los otros jugadores para evitar que se coronen. El primer jugador en coronar sus 4 fichas gana.
 En nusestra versión del parqués añadimos las siguientes reglas:
 
