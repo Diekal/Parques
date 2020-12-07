@@ -28,8 +28,8 @@ void setup() {
   Dado1= 0;                                          //Iniciamos los dados en 0
   Dado2= 0;
   
-  seguro1=7;
-  seguro2=12;
+  //seguro1=7;
+  //seguro2=12;
   
   MoverDado1=true;
   MoverDado2=true;
@@ -49,14 +49,23 @@ void setup() {
 void draw() {
 
   image(fondo, 0, 0, width, height);
+  
   jugador1.DibujarFichas();                           //Dibujamos las fichas de los jugadores
   jugador2.DibujarFichas();
   jugador3.DibujarFichas();
   jugador4.DibujarFichas();
+<<<<<<< HEAD
+
+  dibujarBloqueo();
+  //Seguros();
+  
+
+=======
   
   Seguros();
   dibujarBloqueo();
   
+>>>>>>> 152b5778fc777730160023f0b2b39aa660fb9434
   if (MoverDado1 == false) {
     fill(#804000);
     square(732, 55, 90);
@@ -134,6 +143,7 @@ void mouseReleased() {
 void dibujarBloqueo() {
   for (int n = 0; n < 68; n++) {
     if (tablero[n][3] == 1) {
+      
 
       push();
       noStroke();
