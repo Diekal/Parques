@@ -111,8 +111,6 @@ void keyPressed() {
       tablero[seguro2+51][2]=0;
       seguro1=(int)random(16)+1;  
       seguro2=(int)random(16)+1;
-      System.out.println(seguro1);
-      System.out.println(seguro2);
       tablero[seguro1][2]=1;
       tablero[seguro2][2]=1;
       tablero[seguro1+17][2]=1;
