@@ -98,6 +98,14 @@ void keyPressed() {
       seguro2=(int)random(16)+1;
       System.out.println(seguro1);
       System.out.println(seguro2);
+      tablero[seguro1][2]=1;
+      tablero[seguro2][2]=1;
+      tablero[seguro1+17][2]=1;
+      tablero[seguro2+17][2]=1;
+      tablero[seguro1+34][2]=1;
+      tablero[seguro2+34][2]=1;
+      tablero[seguro1+51][2]=1;
+      tablero[seguro2+51][2]=1;
     }
     if (Turno % NumeroJugadores == 0 ) {                 //Con el módulo del turno entre los jugadores sabemos quien tira los dados 
       jugador1.TirarDados();
