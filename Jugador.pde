@@ -90,12 +90,92 @@ class Jugador {
       ficha_a_mover = 2;
     } else if ((MouseX >= (tablero[ficha3.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha3.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha3.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha3.casilla_actual%68][1]+15)) && ficha3.entrada == false) {
       ficha_a_mover = 3;
-    } else if ((MouseX >= (tablero[ficha4.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha4.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha4.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha4.casilla_actual%68][1]+15)) && ficha1.entrada == false) {
+    } else if ((MouseX >= (tablero[ficha4.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha4.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha4.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha4.casilla_actual%68][1]+15)) && ficha4.entrada == false) {
       ficha_a_mover = 4;
-    } else if(jugador == 1){
-    } else if(jugador == 2){
-    } else if(jugador == 3){
-    } else if(jugador == 4){
+    } else if (jugador == 1) {
+      if (ficha1.entrada == true) {
+        if (MouseX >= 330 && MouseX<= 360 && MouseY >= (420+(ficha1.casillas_coronar*30)) && MouseY <= (450+(ficha1.casillas_coronar*30))) {
+          ficha_a_mover = 1;
+        }
+      }
+      if (ficha2.entrada == true) {
+        if (MouseX >= 330 && MouseX<= 360 && MouseY >= (420+(ficha2.casillas_coronar*30)) && MouseY <= (450+(ficha2.casillas_coronar*30))) {
+          ficha_a_mover = 2;
+        }
+      }
+      if (ficha3.entrada == true) {
+        if (MouseX >= 330 && MouseX<= 360 && MouseY >= (420+(ficha3.casillas_coronar*30)) && MouseY <= (450+(ficha3.casillas_coronar*30))) {
+          ficha_a_mover = 3;
+        }
+      }
+      if (ficha4.entrada == true) {
+        if (MouseX >= 330 && MouseX<= 360 && MouseY >= (420+(ficha4.casillas_coronar*30)) && MouseY <= (450+(ficha4.casillas_coronar*30))) {
+          ficha_a_mover = 4;
+        }
+      }
+    } else if (jugador == 2) {
+      if (ficha1.entrada == true) {
+        if (MouseX >= (420+(ficha1.casillas_coronar*30)) && MouseX <= (450+(ficha1.casillas_coronar*30)) && MouseY >= 330 && MouseY<= 360) {
+          ficha_a_mover = 1;
+        }
+      }
+      if (ficha2.entrada == true) {
+        if (MouseX >= (420+(ficha2.casillas_coronar*30)) && MouseX <= (450+(ficha2.casillas_coronar*30)) && MouseY >= 330 && MouseY<= 360) {
+          ficha_a_mover = 2;
+        }
+      }
+      if (ficha3.entrada == true) {
+        if (MouseX >= (420+(ficha3.casillas_coronar*30)) && MouseX <= (450+(ficha3.casillas_coronar*30)) && MouseY >= 330 && MouseY<= 360) {
+          ficha_a_mover = 3;
+        }
+      }
+      if (ficha4.entrada == true) {
+        if (MouseX >= (420+(ficha4.casillas_coronar*30)) && MouseX <= (450+(ficha4.casillas_coronar*30)) && MouseY >= 330 && MouseY<= 360) {
+          ficha_a_mover = 4;
+        }
+      }
+    } else if (jugador == 3) {
+      if (ficha1.entrada == true) {
+        if (MouseX >= 330 && MouseX<= 360 && MouseY >= (210+(ficha1.casillas_coronar*30)) && MouseY <= (240+(ficha1.casillas_coronar*30))) {
+          ficha_a_mover = 1;
+        }
+      }
+      if (ficha2.entrada == true) {
+        if (MouseX >= 330 && MouseX<= 360 && MouseY >= (210+(ficha2.casillas_coronar*30)) && MouseY <= (240+(ficha2.casillas_coronar*30))) {
+          ficha_a_mover = 2;
+        }
+      }
+      if (ficha3.entrada == true) {
+        if (MouseX >= 330 && MouseX<= 360 && MouseY >= (210+(ficha3.casillas_coronar*30)) && MouseY <= (240+(ficha3.casillas_coronar*30))) {
+          ficha_a_mover = 3;
+        }
+      }
+      if (ficha4.entrada == true) {
+        if (MouseX >= 330 && MouseX<= 360 && MouseY >= (210+(ficha4.casillas_coronar*30)) && MouseY <= (240+(ficha4.casillas_coronar*30))) {
+          ficha_a_mover = 4;
+        }
+      }
+    } else if (jugador == 4) {
+      if (ficha1.entrada == true) {
+        if (MouseX >= (210+(ficha1.casillas_coronar*30)) && MouseX <= (240+(ficha1.casillas_coronar*30)) && MouseY >= 330 && MouseY<= 360) {
+          ficha_a_mover = 1;
+        }
+      }
+      if (ficha2.entrada == true) {
+        if (MouseX >= (210+(ficha2.casillas_coronar*30)) && MouseX <= (240+(ficha2.casillas_coronar*30)) && MouseY >= 330 && MouseY<= 360) {
+          ficha_a_mover = 2;
+        }
+      }
+      if (ficha3.entrada == true) {
+        if (MouseX >= (210+(ficha3.casillas_coronar*30)) && MouseX <= (240+(ficha3.casillas_coronar*30)) && MouseY >= 330 && MouseY<= 360) {
+          ficha_a_mover = 3;
+        }
+      }
+      if (ficha4.entrada == true) {
+        if (MouseX >= (210+(ficha4.casillas_coronar*30)) && MouseX <= (240+(ficha4.casillas_coronar*30)) && MouseY >= 330 && MouseY<= 360) {
+          ficha_a_mover = 4;
+        }
+      }
     }
 
     bloqueoAdelante= false;
@@ -116,7 +196,6 @@ class Jugador {
             MoverDado1 = false;
             ficha1.entrada = false;
           } else if ((ficha1.casillas_avanzadas+Dado1)>=63) {
-            ficha1.entrada = true;
             tablero[ficha1.casilla_actual%68][4] -= 1;
             ficha1.entrar(Dado1-(63-ficha1.casillas_avanzadas));
             if (ficha1.movida) {
@@ -152,6 +231,7 @@ class Jugador {
               espacios -= Dado1;
               MoverDado1 = false;
             }
+            ficha1.entrada = true;
           }
         } else if (ficha1.entrada == true) {
           ficha1.entrar(Dado1);
@@ -195,11 +275,86 @@ class Jugador {
             bloqueoAdelante=true;
           }
         }
-        if (bloqueoAdelante== false) {
-          comer(ficha2, Dado1);
-          ficha2.mover(Dado1); 
-          espacios = espacios - Dado1;
-          MoverDado1 = false;
+        if (ficha2.entrada == false) {
+          if (bloqueoAdelante== false && (ficha2.casillas_avanzadas+Dado1)<63) {
+            comer(ficha2, Dado1);
+            ficha2.mover(Dado1);
+            espacios = espacios - Dado1;
+            MoverDado1 = false;
+            ficha2.entrada = false;
+          } else if ((ficha2.casillas_avanzadas+Dado1)>=63) {
+            tablero[ficha2.casilla_actual%68][4] -= 1;
+            ficha2.entrar(Dado1-(63-ficha2.casillas_avanzadas));
+            if (ficha2.movida) {
+              if (ficha2.ficha_coronada) {
+                if (jugador == 1) {
+                  x2 = 285;
+                  y2 = 420;
+                } else if (jugador == 2) {
+                  x2 = 420;
+                  y2 = 405;
+                } else if (jugador == 3) {
+                  x2 = 285;
+                  y2 = 270;
+                } else if (jugador == 4) {
+                  x2 = 270;
+                  y2 = 285;
+                }
+              } else {
+                if (jugador == 1) {
+                  x2 = 345;
+                  y2 = 435+(ficha2.casillas_coronar*30);
+                } else if (jugador == 2) {
+                  x2 = 435+(ficha2.casillas_coronar*30);
+                  y2 = 345;
+                } else if (jugador == 3) {
+                  x2 = 345;
+                  y2 = 225-(ficha2.casillas_coronar*30);
+                } else if (jugador == 4) {
+                  x2 = 225-(ficha2.casillas_coronar*30);
+                  y2 = 345;
+                }
+              }
+              espacios -= Dado1;
+              MoverDado1 = false;
+            }
+            ficha2.entrada = true;
+          }
+        } else if (ficha2.entrada == true) {
+          ficha2.entrar(Dado1);
+          if (ficha2.movida) {
+            if (ficha2.ficha_coronada) {
+              if (jugador == 1) {
+                x2 = 285;
+                y2 = 420;
+              } else if (jugador == 2) {
+                x2 = 420;
+                y2 = 405;
+              } else if (jugador == 3) {
+                x2 = 285;
+                y2 = 270;
+              } else if (jugador == 4) {
+                x2 = 270;
+                y2 = 285;
+              }
+            } else {
+              if (jugador == 1) {
+                x2 = 345;
+                y2 = 435+(ficha2.casillas_coronar*30);
+              } else if (jugador == 2) {
+                x2 = 435+(ficha2.casillas_coronar*30);
+                y2 = 345;
+              } else if (jugador == 3) {
+                x2 = 345;
+                y2 = 225-(ficha2.casillas_coronar*30);
+              } else if (jugador == 4) {
+                x2 = 225-(ficha2.casillas_coronar*30);
+                y2 = 345;
+              }
+            }
+            espacios-=Dado1;
+            MoverDado1 = false;
+          }
         }
       } else if (ficha_a_mover == 3) {
         for (int i=1; i<=Dado1; i++) {
@@ -207,11 +362,87 @@ class Jugador {
             bloqueoAdelante=true;
           }
         }
-        if (bloqueoAdelante== false) {
-          comer(ficha3, Dado1);
-          ficha3.mover(Dado1);   
-          espacios = espacios - Dado1;
-          MoverDado1 = false;
+        if (ficha3.entrada == false) {
+          if (bloqueoAdelante== false && (ficha3.casillas_avanzadas+Dado1)<63) {
+            comer(ficha3, Dado1);
+            ficha3.mover(Dado1);
+            espacios = espacios - Dado1;
+            MoverDado1 = false;
+            ficha3.entrada = false;
+          } else if ((ficha3.casillas_avanzadas+Dado1)>=63) {
+            
+            tablero[ficha3.casilla_actual%68][4] -= 1;
+            ficha3.entrar(Dado1-(63-ficha3.casillas_avanzadas));
+            if (ficha3.movida) {
+              if (ficha3.ficha_coronada) {
+                if (jugador == 1) {
+                  x3 = 345;
+                  y3 = 420;
+                } else if (jugador == 2) {
+                  x3 = 420;
+                  y3 = 345;
+                } else if (jugador == 3) {
+                  x3 = 345;
+                  y3 = 270;
+                } else if (jugador == 4) {
+                  x3 = 270;
+                  y3 = 345;
+                }
+              } else {
+                if (jugador == 1) {
+                  x3 = 345;
+                  y3 = 435+(ficha3.casillas_coronar*30);
+                } else if (jugador == 2) {
+                  x3 = 435+(ficha3.casillas_coronar*30);
+                  y3 = 345;
+                } else if (jugador == 3) {
+                  x3 = 345;
+                  y3 = 225-(ficha3.casillas_coronar*30);
+                } else if (jugador == 4) {
+                  x3 = 225-(ficha3.casillas_coronar*30);
+                  y3 = 345;
+                }
+              }
+              espacios -= Dado1;
+              MoverDado1 = false;
+            }
+            ficha3.entrada = true;
+          }
+        } else if (ficha3.entrada == true) {
+          ficha3.entrar(Dado1);
+          if (ficha3.movida) {
+            if (ficha3.ficha_coronada) {
+              if (jugador == 1) {
+                x3 = 345;
+                y3 = 420;
+              } else if (jugador == 2) {
+                x3 = 420;
+                y3 = 345;
+              } else if (jugador == 3) {
+                x3 = 345;
+                y3 = 270;
+              } else if (jugador == 4) {
+                x3 = 270;
+                y3 = 345;
+              }
+            } else {
+              if (jugador == 1) {
+                x3 = 345;
+                y3 = 435+(ficha3.casillas_coronar*30);
+              } else if (jugador == 2) {
+                x3 = 435+(ficha3.casillas_coronar*30);
+                y3 = 345;
+              } else if (jugador == 3) {
+                x3 = 345;
+                y3 = 225-(ficha3.casillas_coronar*30);
+              } else if (jugador == 4) {
+                x3 = 225-(ficha3.casillas_coronar*30);
+                y3 = 345;
+              }
+            }
+            espacios -= Dado1;
+            MoverDado1 = false;
+          }
         }
       } else if (ficha_a_mover == 4) {
         for (int i=1; i<=Dado1; i++) {
@@ -219,11 +450,87 @@ class Jugador {
             bloqueoAdelante=true;
           }
         }
-        if (bloqueoAdelante== false) { 
-          comer(ficha4, Dado1);
-          ficha4.mover(Dado1);  
-          espacios = espacios - Dado1;
-          MoverDado1 = false;
+        if (ficha4.entrada == false) {
+          if (bloqueoAdelante== false && (ficha4.casillas_avanzadas+Dado1)<63) {
+            comer(ficha4, Dado1);
+            ficha4.mover(Dado1);
+            espacios = espacios - Dado1;
+            MoverDado1 = false;
+            ficha4.entrada = false;
+          } else if ((ficha4.casillas_avanzadas+Dado1)>=63) {
+            
+            tablero[ficha4.casilla_actual%68][4] -= 1;
+            ficha4.entrar(Dado1-(63-ficha4.casillas_avanzadas));
+            if (ficha4.movida) {
+              if (ficha4.ficha_coronada) {
+                if (jugador == 1) {
+                  x4 = 405;
+                  y4 = 420;
+                } else if (jugador == 2) {
+                  x4 = 420;
+                  y4 = 285;
+                } else if (jugador == 3) {
+                  x4 = 405;
+                  y4 = 270;
+                } else if (jugador == 4) {
+                  x4 = 270;
+                  y4 = 405;
+                }
+              } else {
+                if (jugador == 1) {
+                  x4 = 345;
+                  y4 = 435+(ficha4.casillas_coronar*30);
+                } else if (jugador == 2) {
+                  x4 = 435+(ficha4.casillas_coronar*30);
+                  y4 = 345;
+                } else if (jugador == 3) {
+                  x4 = 345;
+                  y4 = 225-(ficha4.casillas_coronar*30);
+                } else if (jugador == 4) {
+                  x4 = 225-(ficha4.casillas_coronar*30);
+                  y4 = 345;
+                }
+              }
+              espacios -= Dado1;
+              MoverDado1 = false;
+            }
+            ficha4.entrada = true;
+          }
+        } else if (ficha4.entrada == true) {
+          ficha4.entrar(Dado1);
+          if (ficha4.movida) {
+            if (ficha4.ficha_coronada) {
+              if (jugador == 1) {
+                x4 = 405;
+                y4 = 420;
+              } else if (jugador == 2) {
+                x4 = 420;
+                y4 = 285;
+              } else if (jugador == 3) {
+                x4 = 405;
+                y4 = 270;
+              } else if (jugador == 4) {
+                x4 = 270;
+                y4 = 405;
+              }
+            } else {
+              if (jugador == 1) {
+                x4 = 345;
+                y4 = 435+(ficha4.casillas_coronar*30);
+              } else if (jugador == 2) {
+                x4 = 435+(ficha4.casillas_coronar*30);
+                y4 = 345;
+              } else if (jugador == 3) {
+                x4 = 345;
+                y4 = 225-(ficha4.casillas_coronar*30);
+              } else if (jugador == 4) {
+                x4 = 225-(ficha4.casillas_coronar*30);
+                y4 = 345;
+              }
+            }
+            espacios -= Dado1;
+            MoverDado1 = false;
+          }
         }
       }
     } else if ((MouseX >= 857 && MouseX <= 947) && (MouseY >= 55 && MouseY <= 145)&& MoverDado2 == true) {
@@ -242,11 +549,11 @@ class Jugador {
             MoverDado2 = false;
             ficha1.entrada = false;
           } else if ((ficha1.casillas_avanzadas+Dado2)>=63) {
-            ficha1.entrada = true;
+            
             tablero[ficha1.casilla_actual%68][4] -= 1;
             ficha1.entrar(Dado2-(63-ficha1.casillas_avanzadas));
             espacios -= Dado2;
-            MoverDado1 = false;
+            MoverDado2 = false;
           }
         } else if (ficha1.entrada == true) {
           ficha1.entrar(Dado2);
@@ -283,6 +590,42 @@ class Jugador {
             espacios-=Dado2;
             MoverDado2 = false;
           }
+          ficha1.entrada = true;
+        } else if (ficha1.entrada == true) {
+          ficha1.entrar(Dado2);
+          if (ficha1.movida) {
+            if (ficha1.ficha_coronada) {
+              if (jugador == 1) {
+                x1 = 345;
+                y1 = 375;
+              } else if (jugador == 2) {
+                x1 = 375;
+                y1 = 345;
+              } else if (jugador == 3) {
+                x1 = 345;
+                y1 = 315;
+              } else if (jugador == 4) {
+                x1 = 315;
+                y1 = 345;
+              }
+            } else {
+              if (jugador == 1) {
+                x1 = 345;
+                y1 = 435+(ficha1.casillas_coronar*30);
+              } else if (jugador == 2) {
+                x1 = 435+(ficha1.casillas_coronar*30);
+                y1 = 345;
+              } else if (jugador == 3) {
+                x1 = 345;
+                y1 = 225-(ficha1.casillas_coronar*30);
+              } else if (jugador == 4) {
+                x1 = 225-(ficha1.casillas_coronar*30);
+                y1 = 345;
+              }
+            }
+            espacios-=Dado1;
+            MoverDado2 = false;
+          }
         }
       } else if (ficha_a_mover == 2) {
         for (int i=1; i<=Dado2; i++) {
@@ -290,11 +633,87 @@ class Jugador {
             bloqueoAdelante=true;
           }
         }
-        if (bloqueoAdelante== false) {
-          comer(ficha2, Dado2);
-          ficha2.mover(Dado2);  
-          espacios = espacios - Dado2;
-          MoverDado2 = false;
+        if (ficha2.entrada == false) {
+          if (bloqueoAdelante== false && (ficha2.casillas_avanzadas+Dado2)<63) {
+            comer(ficha2, Dado2);
+            ficha2.mover(Dado2);
+            espacios = espacios - Dado2;
+            MoverDado2 = false;
+            ficha2.entrada = false;
+          } else if ((ficha2.casillas_avanzadas+Dado2)>=63) {
+            
+            tablero[ficha2.casilla_actual%68][4] -= 1;
+            ficha2.entrar(Dado2-(63-ficha2.casillas_avanzadas));
+            if (ficha2.movida) {
+              if (ficha2.ficha_coronada) {
+                if (jugador == 1) {
+                  x2 = 285;
+                  y2 = 420;
+                } else if (jugador == 2) {
+                  x2 = 420;
+                  y2 = 405;
+                } else if (jugador == 3) {
+                  x2 = 285;
+                  y2 = 270;
+                } else if (jugador == 4) {
+                  x2 = 270;
+                  y2 = 285;
+                }
+              } else {
+                if (jugador == 1) {
+                  x2 = 345;
+                  y2 = 435+(ficha2.casillas_coronar*30);
+                } else if (jugador == 2) {
+                  x2 = 435+(ficha2.casillas_coronar*30);
+                  y2 = 345;
+                } else if (jugador == 3) {
+                  x2 = 345;
+                  y2 = 225-(ficha2.casillas_coronar*30);
+                } else if (jugador == 4) {
+                  x2 = 225-(ficha2.casillas_coronar*30);
+                  y2 = 345;
+                }
+              }
+              espacios -= Dado2;
+              MoverDado2 = false;
+            }
+            ficha2.entrada = true;
+          }
+        } else if (ficha2.entrada == true) {
+          ficha2.entrar(Dado2);
+          if (ficha2.movida) {
+            if (ficha2.ficha_coronada) {
+              if (jugador == 1) {
+                x2 = 285;
+                y2 = 420;
+              } else if (jugador == 2) {
+                x2 = 420;
+                y2 = 405;
+              } else if (jugador == 3) {
+                x2 = 285;
+                y2 = 270;
+              } else if (jugador == 4) {
+                x2 = 270;
+                y2 = 285;
+              }
+            } else {
+              if (jugador == 1) {
+                x2 = 345;
+                y2 = 435+(ficha2.casillas_coronar*30);
+              } else if (jugador == 2) {
+                x2 = 435+(ficha2.casillas_coronar*30);
+                y2 = 345;
+              } else if (jugador == 3) {
+                x2 = 345;
+                y2 = 225-(ficha2.casillas_coronar*30);
+              } else if (jugador == 4) {
+                x2 = 225-(ficha2.casillas_coronar*30);
+                y2 = 345;
+              }
+            }
+            espacios-=Dado2;
+            MoverDado2 = false;
+          }
         }
       } else if (ficha_a_mover == 3) {
         for (int i=1; i<=Dado2; i++) {
@@ -302,26 +721,180 @@ class Jugador {
             bloqueoAdelante=true;
           }
         }
-        if (bloqueoAdelante== false) {
-          comer(ficha3, Dado2);
-          ficha3.mover(Dado2);  
-          espacios = espacios - Dado2;
-          MoverDado2 = false;
-        }
-      } else if (ficha_a_mover == 4) {
-        for (int i=1; i<=Dado2; i++) {
-          if (tablero[(ficha4.casilla_actual+i)%68][3]==1) {
-            bloqueoAdelante=true;
+        if (ficha3.entrada == false) {
+          if (bloqueoAdelante== false && (ficha3.casillas_avanzadas+Dado2)<63) {
+            comer(ficha3, Dado2);
+            ficha3.mover(Dado2);
+            espacios = espacios - Dado2;
+            MoverDado2 = false;
+            ficha3.entrada = false;
+          } else if ((ficha3.casillas_avanzadas+Dado2)>=63) {
+            
+            tablero[ficha3.casilla_actual%68][4] -= 1;
+            ficha3.entrar(Dado2-(63-ficha3.casillas_avanzadas));
+            if (ficha3.movida) {
+              if (ficha3.ficha_coronada) {
+                if (jugador == 1) {
+                  x3 = 345;
+                  y3 = 420;
+                } else if (jugador == 2) {
+                  x3 = 420;
+                  y3 = 345;
+                } else if (jugador == 3) {
+                  x3 = 345;
+                  y3 = 270;
+                } else if (jugador == 4) {
+                  x3 = 270;
+                  y3 = 345;
+                }
+              } else {
+                if (jugador == 1) {
+                  x3 = 345;
+                  y3 = 435+(ficha3.casillas_coronar*30);
+                } else if (jugador == 2) {
+                  x3 = 435+(ficha3.casillas_coronar*30);
+                  y3 = 345;
+                } else if (jugador == 3) {
+                  x3 = 345;
+                  y3 = 225-(ficha3.casillas_coronar*30);
+                } else if (jugador == 4) {
+                  x3 = 225-(ficha3.casillas_coronar*30);
+                  y3 = 345;
+                }
+              }
+              espacios -= Dado2;
+              MoverDado2 = false;
+            }
+            ficha3.entrada = true;
+          }
+        } else if (ficha3.entrada == true) {
+          ficha3.entrar(Dado2);
+          if (ficha3.movida) {
+            if (ficha3.ficha_coronada) {
+              if (jugador == 1) {
+                x3 = 345;
+                y3 = 420;
+              } else if (jugador == 2) {
+                x3 = 420;
+                y3 = 345;
+              } else if (jugador == 3) {
+                x3 = 345;
+                y3 = 270;
+              } else if (jugador == 4) {
+                x3 = 270;
+                y3 = 345;
+              }
+            } else {
+              if (jugador == 1) {
+                x3 = 345;
+                y3 = 435+(ficha3.casillas_coronar*30);
+              } else if (jugador == 2) {
+                x3 = 435+(ficha3.casillas_coronar*30);
+                y3 = 345;
+              } else if (jugador == 3) {
+                x3 = 345;
+                y3 = 225-(ficha3.casillas_coronar*30);
+              } else if (jugador == 4) {
+                x3 = 225-(ficha3.casillas_coronar*30);
+                y3 = 345;
+              }
+            }
+            espacios -= Dado2;
+            MoverDado2 = false;
           }
         }
-        if (bloqueoAdelante== false) {
-          comer(ficha4, Dado2); 
-          ficha4.mover(Dado2); 
+      }
+    } else if (ficha_a_mover == 4) {
+      for (int i=1; i<=Dado2; i++) {
+        if (tablero[(ficha4.casilla_actual+i)%68][3]==1) {
+          bloqueoAdelante=true;
+        }
+      }
+      if (ficha4.entrada == false) {
+        if (bloqueoAdelante== false && (ficha4.casillas_avanzadas+Dado2)<63) {
+          comer(ficha4, Dado2);
+          ficha4.mover(Dado2);
           espacios = espacios - Dado2;
+          MoverDado2 = false;
+          ficha4.entrada = false;
+        } else if ((ficha4.casillas_avanzadas+Dado2)>=63) {
+          
+          tablero[ficha4.casilla_actual%68][4] -= 1;
+          ficha4.entrar(Dado2-(63-ficha4.casillas_avanzadas));
+          if (ficha4.movida) {
+            if (ficha4.ficha_coronada) {
+              if (jugador == 1) {
+                x4 = 405;
+                y4 = 420;
+              } else if (jugador == 2) {
+                x4 = 420;
+                y4 = 285;
+              } else if (jugador == 3) {
+                x4 = 405;
+                y4 = 270;
+              } else if (jugador == 4) {
+                x4 = 270;
+                y4 = 405;
+              }
+            } else {
+              if (jugador == 1) {
+                x4 = 345;
+                y4 = 435+(ficha4.casillas_coronar*30);
+              } else if (jugador == 2) {
+                x4 = 435+(ficha4.casillas_coronar*30);
+                y4 = 345;
+              } else if (jugador == 3) {
+                x4 = 345;
+                y4 = 225-(ficha4.casillas_coronar*30);
+              } else if (jugador == 4) {
+                x4 = 225-(ficha4.casillas_coronar*30);
+                y4 = 345;
+              }
+            }
+            espacios -= Dado2;
+            MoverDado2 = false;
+          }
+          ficha4.entrada = true;
+        }
+      } else if (ficha4.entrada == true) {
+        ficha4.entrar(Dado2);
+        if (ficha4.movida) {
+          if (ficha4.ficha_coronada) {
+            if (jugador == 1) {
+              x4 = 405;
+              y4 = 420;
+            } else if (jugador == 2) {
+              x4 = 420;
+              y4 = 285;
+            } else if (jugador == 3) {
+              x4 = 405;
+              y4 = 270;
+            } else if (jugador == 4) {
+              x4 = 270;
+              y4 = 405;
+            }
+          } else {
+            if (jugador == 1) {
+              x4 = 345;
+              y4 = 435+(ficha4.casillas_coronar*30);
+            } else if (jugador == 2) {
+              x4 = 435+(ficha4.casillas_coronar*30);
+              y4 = 345;
+            } else if (jugador == 3) {
+              x4 = 345;
+              y4 = 225-(ficha4.casillas_coronar*30);
+            } else if (jugador == 4) {
+              x4 = 225-(ficha4.casillas_coronar*30);
+              y4 = 345;
+            }
+          }
+          espacios -= Dado2;
           MoverDado2 = false;
         }
       }
-    }else if ((MouseX >= 731 && MouseX <= 947) && (MouseY >= 175 && MouseY <= 260)&& avanzarComer == true){
+    }
+    
+    else if ((MouseX >= 731 && MouseX <= 947) && (MouseY >= 175 && MouseY <= 260)&& avanzarComer == true) {
       //Movemos la ficha
       if (ficha_a_mover == 1) {
         for (int i=1; i<=20; i++) {
@@ -370,12 +943,14 @@ class Jugador {
       }
     }
 
+
     //verificamos si se puede cambiar de turno
     if (espacios == 0 && pares == 0) {
       turnoActual=true;
       Turno++;
     }
   }
+
 
   void SacarCarcel() {
 

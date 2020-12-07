@@ -1,8 +1,8 @@
 void Seguros(){
   
   //Cada 2 rondas cambian  de lugar los seguros
-<<<<<<< HEAD
-  if ((Turno%20)==0 && Turno!=0){
+
+  if ((Turno%31000)==0 && Turno!=0){
     tablero[seguro1][2]=1;
     tablero[seguro2][2]=1;
     tablero[seguro1+17][2]=1;
@@ -12,9 +12,8 @@ void Seguros(){
     tablero[seguro1+51][2]=1;
     tablero[seguro2+51][2]=1;
   }
-=======
+
   
->>>>>>> 11c46583b3feed6de4e7ad505fbbbaacb29e6e8d
   int[] seguros = {seguro1, seguro2};
   fill(#9c9c9c);
   //Dibujamos los seguros, incluyendo los casos especiales de la esquinas

@@ -42,12 +42,14 @@ class Ficha {
     stroke(0);
     strokeWeight(2);
     fill(color_ficha);
+    
 
     if (x == 0 && y == 0) {
       if (ficha_en_carcel==false) {                                                //Verificamos si la ficha está en juego o en la carcel y se dibuja
         circle(tablero[casilla_actual%68][0], tablero[casilla_actual%68][1], 30);
       } else {
         circle(carcel[0], carcel[1], 30);
+        casillas_avanzadas = 0;
       }
     } else {
       circle(x, y, 30);
