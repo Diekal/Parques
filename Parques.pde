@@ -53,10 +53,10 @@ void draw() {
   jugador2.DibujarFichas();
   jugador3.DibujarFichas();
   jugador4.DibujarFichas();
-
-  dibujarBloqueo();
+  
   Seguros();
-
+  dibujarBloqueo();
+  
   if (MoverDado1 == false) {
     fill(#804000);
     square(732, 55, 90);
@@ -85,6 +85,20 @@ void draw() {
 void keyPressed() {
   if (key == ENTER) {
     turnoActual=false;
+    if ((Turno%8)==0 && Turno!=0){
+      tablero[seguro1][2]=0;
+      tablero[seguro2][2]=0;
+      tablero[seguro1+17][2]=0;
+      tablero[seguro2+17][2]=0;
+      tablero[seguro1+34][2]=0;
+      tablero[seguro2+34][2]=0;
+      tablero[seguro1+51][2]=0;
+      tablero[seguro2+51][2]=0;
+      seguro1=(int)random(16)+1;  
+      seguro2=(int)random(16)+1;
+      System.out.println(seguro1);
+      System.out.println(seguro2);
+    }
     if (Turno % NumeroJugadores == 0 ) {                 //Con el módulo del turno entre los jugadores sabemos quien tira los dados 
       jugador1.TirarDados();
     } else if (Turno % NumeroJugadores == 1 ) {
