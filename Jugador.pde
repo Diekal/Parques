@@ -461,76 +461,76 @@ class Jugador {
         if (jugador1.ficha1.casilla_actual == ficha.casilla_actual+Dado){
           jugador1.ficha1.ficha_en_carcel = true;
           jugador1.ficha1.casilla_actual = 0;
-          tablero[(ficha.casilla_actual+Dado)%68][4]-=1;
+          tablero[(ficha.casilla_actual+Dado)%68][4] --;
         } else if (jugador1.ficha2.casilla_actual == ficha.casilla_actual+Dado){
           jugador1.ficha2.ficha_en_carcel = true;
           jugador1.ficha2.casilla_actual = 0;
-          tablero[(ficha.casilla_actual+Dado)%68][4]-=1;
+          tablero[(ficha.casilla_actual+Dado)%68][4] --;
         } else if (jugador1.ficha3.casilla_actual == ficha.casilla_actual+Dado){
           jugador1.ficha3.ficha_en_carcel = true;
           jugador1.ficha3.casilla_actual = 0;
-          tablero[(ficha.casilla_actual+Dado)%68][4]-=1;
+          tablero[(ficha.casilla_actual+Dado)%68][4] --;
         } else if (jugador1.ficha4.casilla_actual == ficha.casilla_actual+Dado){
           jugador1.ficha4.ficha_en_carcel = true;
           jugador1.ficha4.casilla_actual = 0;
-          tablero[(ficha.casilla_actual+Dado)%68][4]-=1;
+          tablero[(ficha.casilla_actual+Dado)%68][4] --;
         }
         
       }else if (tablero[(ficha.casilla_actual+Dado)%68][5]==2 && ficha.numero_jugador!=2){
         if (jugador2.ficha1.casilla_actual == ficha.casilla_actual+Dado){
           jugador2.ficha1.ficha_en_carcel = true;
           jugador2.ficha1.casilla_actual = 17;
-          tablero[(ficha.casilla_actual+Dado)%68][4]-=1;
+          tablero[(ficha.casilla_actual+Dado)%68][4] --;
         } else if (jugador2.ficha2.casilla_actual == ficha.casilla_actual+Dado){
           jugador2.ficha2.ficha_en_carcel = true;
           jugador2.ficha2.casilla_actual = 17;
-          tablero[(ficha.casilla_actual+Dado)%68][4]-=1;
+          tablero[(ficha.casilla_actual+Dado)%68][4] --;
         } else if (jugador2.ficha3.casilla_actual == ficha.casilla_actual+Dado){
           jugador2.ficha3.ficha_en_carcel = true;
           jugador2.ficha3.casilla_actual = 17;
-          tablero[(ficha.casilla_actual+Dado)%68][4]-=1;
+          tablero[(ficha.casilla_actual+Dado)%68][4] --;
         } else if (jugador2.ficha4.casilla_actual == ficha.casilla_actual+Dado){
           jugador2.ficha4.ficha_en_carcel = true;
           jugador2.ficha4.casilla_actual = 17;
-          tablero[(ficha.casilla_actual+Dado)%68][4]-=1;
+          tablero[(ficha.casilla_actual+Dado)%68][4] --;
         }
         
       }else if (tablero[(ficha.casilla_actual+Dado)%68][5]==3 && ficha.numero_jugador!=3){
         if (jugador3.ficha1.casilla_actual == ficha.casilla_actual+Dado){
           jugador3.ficha1.ficha_en_carcel = true;
           jugador3.ficha1.casilla_actual = 34;
-          tablero[(ficha.casilla_actual+Dado)%68][4]-=1;
+          tablero[(ficha.casilla_actual+Dado)%68][4] --;
         } else if (jugador3.ficha2.casilla_actual == ficha.casilla_actual+Dado){
           jugador3.ficha2.ficha_en_carcel = true;
           jugador3.ficha2.casilla_actual = 34;
-          tablero[(ficha.casilla_actual+Dado)%68][4]-=1;
+          tablero[(ficha.casilla_actual+Dado)%68][4] --;
         } else if (jugador3.ficha3.casilla_actual == ficha.casilla_actual+Dado){
           jugador3.ficha3.ficha_en_carcel = true;
           jugador3.ficha3.casilla_actual = 34;
-          tablero[(ficha.casilla_actual+Dado)%68][4]-=1;
+          tablero[(ficha.casilla_actual+Dado)%68][4] --;
         } else if (jugador3.ficha4.casilla_actual == ficha.casilla_actual+Dado){
           jugador3.ficha4.ficha_en_carcel = true;
           jugador3.ficha4.casilla_actual = 34;
-          tablero[(ficha.casilla_actual+Dado)%68][4]-=1;
+          tablero[(ficha.casilla_actual+Dado)%68][4] --;
         }
         
       }else if (tablero[(ficha.casilla_actual+Dado)%68][5]==4 && ficha.numero_jugador!=4){
         if (jugador4.ficha1.casilla_actual == ficha.casilla_actual+Dado){
           jugador4.ficha1.ficha_en_carcel = true;
           jugador4.ficha1.casilla_actual = 51;
-          tablero[(ficha.casilla_actual+Dado)%68][4]-=1;
+          tablero[(ficha.casilla_actual+Dado)%68][4] --;
         } else if (jugador4.ficha2.casilla_actual == ficha.casilla_actual+Dado){
           jugador4.ficha2.ficha_en_carcel = true;
           jugador4.ficha2.casilla_actual = 51;
-          tablero[(ficha.casilla_actual+Dado)%68][4]-=1;
+          tablero[(ficha.casilla_actual+Dado)%68][4] --;
         } else if (jugador4.ficha3.casilla_actual == ficha.casilla_actual+Dado){
           jugador4.ficha3.ficha_en_carcel = true;
           jugador4.ficha3.casilla_actual = 51;
-          tablero[(ficha.casilla_actual+Dado)%68][4]-=1;
+          tablero[(ficha.casilla_actual+Dado)%68][4] --;
         } else if (jugador4.ficha4.casilla_actual == ficha.casilla_actual+Dado){
           jugador4.ficha4.ficha_en_carcel = true;
           jugador4.ficha4.casilla_actual = 51;
-          tablero[(ficha.casilla_actual+Dado)%68][4]-=1;
+          tablero[(ficha.casilla_actual+Dado)%68][4] --;
         }
         
       }
