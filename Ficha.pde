@@ -59,6 +59,9 @@ class Ficha {
     if (tablero[casilla_actual%68][4]==0 ){
       tablero[casilla_actual%68][5] = 0;  
     }
+    if(tablero[casilla_actual%68][4] < 2){
+      tablero[casilla_actual%68][3] = 0;
+    }
     casilla_actual += espacios;
     casillas_avanzadas+=espacios;
     tablero[casilla_actual%68][4] += 1;
