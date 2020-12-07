@@ -941,6 +941,8 @@ class Jugador {
           avanzarComer=false;
         }
       }
+    } if ((MouseX >= 780 && MouseX <= 880) && (MouseY >= 590 && MouseY <= 650)){
+      Turno++;
     }
 
 
