@@ -2,10 +2,10 @@ class Ficha {
 
   int[] carcel={0, 0};                                       //Coordendas de la carcel
   int casilla_actual;                                        //Casilla actual de la ficha
-  int casillas_avanzadas;                                    //Casillas avanzadas por la ficha
+  int casillas_avanzadas, casillas_coronar;                                    //Casillas avanzadas por la ficha
   int numero_jugador;
   color color_ficha;                                         //Color ficha 
-  Boolean ficha_en_carcel;                                   //Estado de la ficha (en la carcel o no) //Estado de casilla en bloqueo
+  Boolean ficha_en_carcel, entrada, ficha_coronada, movida;                                   //Estado de la ficha (en la carcel o no) //Estado de casilla en bloqueo
 
   Ficha(int jugador, int carcelX, int carcelY) {
 
@@ -33,6 +33,8 @@ class Ficha {
       casilla_actual = 51;  //su salida
       break;
     }
+    casillas_coronar = 8;
+    entrada = false;
   }
 
   void dibujar(int x, int y) {
@@ -56,10 +58,10 @@ class Ficha {
 
   void mover(int espacios) {
     tablero[casilla_actual%68][4] -= 1;
-    if (tablero[casilla_actual%68][4]==0 ){
-      tablero[casilla_actual%68][5] = 0;  
+    if (tablero[casilla_actual%68][4]==0 ) {
+      tablero[casilla_actual%68][5] = 0;
     }
-    if(tablero[casilla_actual%68][4] < 2){
+    if (tablero[casilla_actual%68][4] < 2) {
       tablero[casilla_actual%68][3] = 0;
     }
     casilla_actual += espacios;
@@ -67,6 +69,21 @@ class Ficha {
     tablero[casilla_actual%68][4] += 1;
     tablero[casilla_actual%68][5] = numero_jugador;
   }
+
+  void entrar(int casillas) {
+    if ((casillas_coronar - casillas) >= 0) {
+      casillas_coronar -= casillas;
+      movida = true;
+      if (casillas_coronar == 0) {
+        ficha_coronada = true;
+      } else {
+        ficha_coronada = false;
+      }
+    } else {
+      movida = false;
+    }
+  }
+
 
   // CAMBIAR SEGUROS -- VANE 
   // MOVER (VERIFICAR SI SE PUEDE MOVER, MOVER) CLASE FICHA

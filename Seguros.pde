@@ -1,7 +1,7 @@
 void Seguros(){
   
   //Cada 2 rondas cambian  de lugar los seguros
-  if ((Turno%8)==0 && Turno!=0){
+  if ((Turno%20)==0 && Turno!=0){
     tablero[seguro1][2]=1;
     tablero[seguro2][2]=1;
     tablero[seguro1+17][2]=1;

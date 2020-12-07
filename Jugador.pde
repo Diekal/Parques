@@ -84,15 +84,19 @@ class Jugador {
   void moverFicha(int MouseX, int MouseY) {
     espacios_avanzados = 0;
     //Verificamos la ficha que se esta seleccionando 
-    if ((MouseX >= (tablero[ficha1.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha1.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha1.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha1.casilla_actual%68][1]+15))) {
+    if ((MouseX >= (tablero[ficha1.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha1.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha1.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha1.casilla_actual%68][1]+15)) && ficha1.entrada == false) {
       ficha_a_mover = 1;
-    } else if ((MouseX >= (tablero[ficha2.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha2.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha2.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha2.casilla_actual%68][1]+15))) {
+    } else if ((MouseX >= (tablero[ficha2.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha2.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha2.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha2.casilla_actual%68][1]+15)) && ficha2.entrada == false) {
       ficha_a_mover = 2;
-    } else if ((MouseX >= (tablero[ficha3.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha3.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha3.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha3.casilla_actual%68][1]+15))) {
+    } else if ((MouseX >= (tablero[ficha3.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha3.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha3.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha3.casilla_actual%68][1]+15)) && ficha3.entrada == false) {
       ficha_a_mover = 3;
-    } else if ((MouseX >= (tablero[ficha4.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha4.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha4.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha4.casilla_actual%68][1]+15))) {
+    } else if ((MouseX >= (tablero[ficha4.casilla_actual%68][0]-15) && MouseX <= (tablero[ficha4.casilla_actual%68][0]+15)) && (MouseY >= (tablero[ficha4.casilla_actual%68][1]-15) && MouseY <= (tablero[ficha4.casilla_actual%68][1]+15)) && ficha1.entrada == false) {
       ficha_a_mover = 4;
-    } 
+    } else if(jugador == 1){
+    } else if(jugador == 2){
+    } else if(jugador == 3){
+    } else if(jugador == 4){
+    }
 
     bloqueoAdelante= false;
     if ((MouseX >= 715 && MouseX <= 822) && (MouseY >= 55 && MouseY <= 145) && MoverDado1 == true) {
@@ -103,11 +107,87 @@ class Jugador {
             bloqueoAdelante=true;
           }
         }
-        if (bloqueoAdelante== false) {
-          comer(ficha1, Dado1);
-          ficha1.mover(Dado1);
-          espacios = espacios - Dado1;
-          MoverDado1 = false;
+
+        if (ficha1.entrada == false) {
+          if (bloqueoAdelante== false && (ficha1.casillas_avanzadas+Dado1)<63) {
+            comer(ficha1, Dado1);
+            ficha1.mover(Dado1);
+            espacios = espacios - Dado1;
+            MoverDado1 = false;
+            ficha1.entrada = false;
+          } else if ((ficha1.casillas_avanzadas+Dado1)>=63) {
+            ficha1.entrada = true;
+            tablero[ficha1.casilla_actual%68][4] -= 1;
+            ficha1.entrar(Dado1-(63-ficha1.casillas_avanzadas));
+            if (ficha1.movida) {
+              if (ficha1.ficha_coronada) {
+                if (jugador == 1) {
+                  x1 = 345;
+                  y1 = 375;
+                } else if (jugador == 2) {
+                  x1 = 375;
+                  y1 = 345;
+                } else if (jugador == 3) {
+                  x1 = 345;
+                  y1 = 315;
+                } else if (jugador == 4) {
+                  x1 = 315;
+                  y1 = 345;
+                }
+              } else {
+                if (jugador == 1) {
+                  x1 = 345;
+                  y1 = 435+(ficha1.casillas_coronar*30);
+                } else if (jugador == 2) {
+                  x1 = 435+(ficha1.casillas_coronar*30);
+                  y1 = 345;
+                } else if (jugador == 3) {
+                  x1 = 345;
+                  y1 = 225-(ficha1.casillas_coronar*30);
+                } else if (jugador == 4) {
+                  x1 = 225-(ficha1.casillas_coronar*30);
+                  y1 = 345;
+                }
+              }
+              espacios -= Dado1;
+              MoverDado1 = false;
+            }
+          }
+        } else if (ficha1.entrada == true) {
+          ficha1.entrar(Dado1);
+          if (ficha1.movida) {
+            if (ficha1.ficha_coronada) {
+              if (jugador == 1) {
+                x1 = 345;
+                y1 = 375;
+              } else if (jugador == 2) {
+                x1 = 375;
+                y1 = 345;
+              } else if (jugador == 3) {
+                x1 = 345;
+                y1 = 315;
+              } else if (jugador == 4) {
+                x1 = 315;
+                y1 = 345;
+              }
+            } else {
+              if (jugador == 1) {
+                x1 = 345;
+                y1 = 435+(ficha1.casillas_coronar*30);
+              } else if (jugador == 2) {
+                x1 = 435+(ficha1.casillas_coronar*30);
+                y1 = 345;
+              } else if (jugador == 3) {
+                x1 = 345;
+                y1 = 225-(ficha1.casillas_coronar*30);
+              } else if (jugador == 4) {
+                x1 = 225-(ficha1.casillas_coronar*30);
+                y1 = 345;
+              }
+            }
+            espacios-=Dado1;
+            MoverDado1 = false;
+          }
         }
       } else if (ficha_a_mover == 2) {
         for (int i=1; i<=Dado1; i++) {
@@ -154,11 +234,55 @@ class Jugador {
             bloqueoAdelante=true;
           }
         }
-        if (bloqueoAdelante== false) { 
-          comer(ficha1, Dado2);
-          ficha1.mover(Dado2);  
-          espacios = espacios - Dado2;
-          MoverDado2 = false;
+        if (ficha1.entrada == false) {
+          if (bloqueoAdelante== false && (ficha1.casillas_avanzadas+Dado2)<63) {
+            comer(ficha1, Dado2);
+            ficha1.mover(Dado2);
+            espacios = espacios - Dado2;
+            MoverDado2 = false;
+            ficha1.entrada = false;
+          } else if ((ficha1.casillas_avanzadas+Dado2)>=63) {
+            ficha1.entrada = true;
+            tablero[ficha1.casilla_actual%68][4] -= 1;
+            ficha1.entrar(Dado2-(63-ficha1.casillas_avanzadas));
+            espacios -= Dado2;
+            MoverDado1 = false;
+          }
+        } else if (ficha1.entrada == true) {
+          ficha1.entrar(Dado2);
+          if (ficha1.movida) {
+            if (ficha1.ficha_coronada) {
+              if (jugador == 1) {
+                x1 = 345;
+                y1 = 375;
+              } else if (jugador == 2) {
+                x1 = 375;
+                y1 = 345;
+              } else if (jugador == 3) {
+                x1 = 345;
+                y1 = 315;
+              } else if (jugador == 4) {
+                x1 = 315;
+                y1 = 345;
+              }
+            } else {
+              if (jugador == 1) {
+                x1 = 345;
+                y1 = 435+(ficha1.casillas_coronar*30);
+              } else if (jugador == 2) {
+                x1 = 435+(ficha1.casillas_coronar*30);
+                y1 = 345;
+              } else if (jugador == 3) {
+                x1 = 345;
+                y1 = 225-(ficha1.casillas_coronar*30);
+              } else if (jugador == 4) {
+                x1 = 225-(ficha1.casillas_coronar*30);
+                y1 = 345;
+              }
+            }
+            espacios-=Dado2;
+            MoverDado2 = false;
+          }
         }
       } else if (ficha_a_mover == 2) {
         for (int i=1; i<=Dado2; i++) {
@@ -333,7 +457,7 @@ class Jugador {
       tablero[ficha1.casilla_actual%68][3] = 1;
 
       //Casillas horizontales
-      if ((ficha1.casilla_actual%68 <= 2) || (ficha1.casilla_actual%68 >= 22 && ficha1.casilla_actual%68 <= 36) || (ficha1.casilla_actual%68 >= 56)) {
+      if ((ficha1.casilla_actual%68 <= 3) || (ficha1.casilla_actual%68 >= 21 && ficha1.casilla_actual%68 <= 37) || (ficha1.casilla_actual%68 >= 55)) {
         x1 = tablero[ficha1.casilla_actual%68][0]+20 ;
         y1 = tablero[ficha1.casilla_actual%68][1];
         x2 = tablero[ficha2.casilla_actual%68][0]-20 ;
@@ -341,7 +465,7 @@ class Jugador {
       }
 
       //Casillas verticales
-      else if ((ficha1.casilla_actual%68 >= 5 && ficha1.casilla_actual%68 <= 19)||(ficha1.casilla_actual%68 >= 39 && ficha1.casilla_actual%68 <= 53)) {
+      else if ((ficha1.casilla_actual%68 >= 4 && ficha1.casilla_actual%68 <= 20)||(ficha1.casilla_actual%68 >= 38 && ficha1.casilla_actual%68 <= 54)) {
         x1 = tablero[ficha1.casilla_actual%68][0];
         y1 = tablero[ficha1.casilla_actual%68][1]+20;
         x2 = tablero[ficha2.casilla_actual%68][0];
@@ -350,7 +474,7 @@ class Jugador {
     } else if (ficha1.casilla_actual%68 == ficha3.casilla_actual%68 && ficha1.ficha_en_carcel == false && ficha3.ficha_en_carcel == false) {
       tablero[ficha1.casilla_actual%68][3] = 1;
 
-      if ((ficha1.casilla_actual%68 <= 2) || (ficha1.casilla_actual%68 >= 22 && ficha1.casilla_actual%68 <= 36) || (ficha1.casilla_actual%68 >= 56)) {
+      if ((ficha1.casilla_actual%68 <= 3) || (ficha1.casilla_actual%68 >= 21 && ficha1.casilla_actual%68 <= 37) || (ficha1.casilla_actual%68 >= 55)) {
         x1 = tablero[ficha1.casilla_actual%68][0]+20 ;
         y1 = tablero[ficha1.casilla_actual%68][1];
         x3 = tablero[ficha3.casilla_actual%68][0]-20 ;
@@ -358,7 +482,7 @@ class Jugador {
       }
 
       //Casillas verticales
-      else if ((ficha1.casilla_actual%68 >= 5 && ficha1.casilla_actual%68 <= 19)||(ficha1.casilla_actual%68 >= 39 && ficha1.casilla_actual%68 <= 53)) {
+      else if ((ficha1.casilla_actual%68 >= 4 && ficha1.casilla_actual%68 <= 20)||(ficha1.casilla_actual%68 >= 38 && ficha1.casilla_actual%68 <= 54)) {
         x1 = tablero[ficha1.casilla_actual%68][0];
         y1 = tablero[ficha1.casilla_actual%68][1]+20;
         x3 = tablero[ficha3.casilla_actual%68][0];
@@ -367,7 +491,7 @@ class Jugador {
     } else if (ficha1.casilla_actual%68 == ficha4.casilla_actual%68 && ficha1.ficha_en_carcel == false && ficha4.ficha_en_carcel == false) {
       tablero[ficha1.casilla_actual%68][3] = 1;
 
-      if ((ficha1.casilla_actual%68 <= 2) || (ficha1.casilla_actual%68 >= 22 && ficha1.casilla_actual%68 <= 36) || (ficha1.casilla_actual%68 >= 56)) {
+      if ((ficha1.casilla_actual%68 <= 3) || (ficha1.casilla_actual%68 >= 21 && ficha1.casilla_actual%68 <= 37) || (ficha1.casilla_actual%68 >= 55)) {
         x1 = tablero[ficha1.casilla_actual%68][0]+20 ;
         y1 = tablero[ficha1.casilla_actual%68][1];
         x4 = tablero[ficha4.casilla_actual%68][0]-20 ;
@@ -375,7 +499,7 @@ class Jugador {
       }
 
       //Casillas verticales
-      else if ((ficha1.casilla_actual%68 >= 5 && ficha1.casilla_actual%68 <= 19)||(ficha1.casilla_actual%68 >= 39 && ficha1.casilla_actual%68 <= 53)) {
+      else if ((ficha1.casilla_actual%68 >= 4 && ficha1.casilla_actual%68 <= 20)||(ficha1.casilla_actual%68 >= 38 && ficha1.casilla_actual%68 <= 54)) {
         x1 = tablero[ficha1.casilla_actual%68][0];
         y1 = tablero[ficha1.casilla_actual%68][1]+20;
         x4 = tablero[ficha4.casilla_actual%68][0];
@@ -384,7 +508,7 @@ class Jugador {
     } else if (ficha2.casilla_actual%68 == ficha3.casilla_actual%68 && ficha2.ficha_en_carcel == false && ficha3.ficha_en_carcel == false) {
       tablero[ficha2.casilla_actual%68][3] = 1;
 
-      if ((ficha2.casilla_actual%68 <= 2) || (ficha2.casilla_actual%68 >= 22 && ficha2.casilla_actual%68 <= 36) || (ficha2.casilla_actual%68 >= 56)) {
+      if ((ficha2.casilla_actual%68 <= 3) || (ficha2.casilla_actual%68 >= 21 && ficha2.casilla_actual%68 <= 37) || (ficha2.casilla_actual%68 >= 55)) {
         x2 = tablero[ficha2.casilla_actual%68][0]+20 ;
         y2 = tablero[ficha2.casilla_actual%68][1];
         x3 = tablero[ficha3.casilla_actual%68][0]-20 ;
@@ -392,7 +516,7 @@ class Jugador {
       }
 
       //Casillas verticales
-      else if ((ficha2.casilla_actual%68 >= 5 && ficha2.casilla_actual%68 <= 19)||(ficha2.casilla_actual%68 >= 39 && ficha2.casilla_actual%68 <= 53)) {
+      else if ((ficha2.casilla_actual%68 >= 4 && ficha2.casilla_actual%68 <= 20)||(ficha2.casilla_actual%68 >= 38 && ficha2.casilla_actual%68 <= 54)) {
         x2 = tablero[ficha2.casilla_actual%68][0];
         y2 = tablero[ficha2.casilla_actual%68][1]+20;
         x3 = tablero[ficha3.casilla_actual%68][0];
@@ -401,7 +525,7 @@ class Jugador {
     } else if (ficha2.casilla_actual%68 == ficha4.casilla_actual%68 && ficha2.ficha_en_carcel == false && ficha4.ficha_en_carcel == false) {
       tablero[ficha2.casilla_actual%68][3] = 1;
 
-      if ((ficha2.casilla_actual%68 <= 2) || (ficha2.casilla_actual%68 >= 22 && ficha2.casilla_actual%68 <= 36) || (ficha2.casilla_actual%68 >= 56)) {
+      if ((ficha2.casilla_actual%68 <= 3) || (ficha2.casilla_actual%68 >= 21 && ficha2.casilla_actual%68 <= 37) || (ficha2.casilla_actual%68 >= 55)) {
         x2 = tablero[ficha2.casilla_actual%68][0]+20 ;
         y2 = tablero[ficha2.casilla_actual%68][1];
         x4 = tablero[ficha4.casilla_actual%68][0]-20 ;
@@ -409,7 +533,7 @@ class Jugador {
       }
 
       //Casillas verticales
-      else if ((ficha2.casilla_actual%68 >= 5 && ficha2.casilla_actual%68 <= 19)||(ficha2.casilla_actual%68 >= 39 && ficha2.casilla_actual%68 <= 53)) {
+      else if ((ficha2.casilla_actual%68 >= 4 && ficha2.casilla_actual%68 <= 20)||(ficha2.casilla_actual%68 >= 38 && ficha2.casilla_actual%68 <= 54)) {
         x2 = tablero[ficha2.casilla_actual%68][0];
         y2 = tablero[ficha2.casilla_actual%68][1]+20;
         x4 = tablero[ficha4.casilla_actual%68][0];
@@ -418,7 +542,7 @@ class Jugador {
     } else if (ficha3.casilla_actual%68 == ficha4.casilla_actual%68 && ficha3.ficha_en_carcel == false && ficha4.ficha_en_carcel == false) {
       tablero[ficha3.casilla_actual%68][3] = 1;
 
-      if ((ficha3.casilla_actual%68 <= 2) || (ficha3.casilla_actual%68 >= 22 && ficha3.casilla_actual%68 <= 36) || (ficha3.casilla_actual%68 >= 56)) {
+      if ((ficha3.casilla_actual%68 <= 3) || (ficha3.casilla_actual%68 >= 21 && ficha3.casilla_actual%68 <= 37) || (ficha3.casilla_actual%68 >= 55)) {
         x3 = tablero[ficha3.casilla_actual%68][0]+20 ;
         y3 = tablero[ficha3.casilla_actual%68][1];
         x4 = tablero[ficha4.casilla_actual%68][0]-20 ;
@@ -426,21 +550,29 @@ class Jugador {
       }
 
       //Casillas verticales
-      else if ((ficha3.casilla_actual%68 >= 5 && ficha3.casilla_actual%68 <= 19)||(ficha3.casilla_actual%68 >= 39 && ficha3.casilla_actual%68 <= 53)) {
+      else if ((ficha3.casilla_actual%68 >= 4 && ficha3.casilla_actual%68 <= 20)||(ficha3.casilla_actual%68 >= 38 && ficha3.casilla_actual%68 <= 54)) {
         x3 = tablero[ficha3.casilla_actual%68][0];
         y3 = tablero[ficha3.casilla_actual%68][1]+20;
         x4 = tablero[ficha4.casilla_actual%68][0];
         y4 = tablero[ficha4.casilla_actual%68][1]-20;
       }
     } else if (tablero[ficha1.casilla_actual%68][4] < 2 && tablero[ficha2.casilla_actual%68][4] < 2 && tablero[ficha3.casilla_actual%68][4] < 2 && tablero[ficha4.casilla_actual%68][4] < 2) {
-      x1 = 0;
-      x2 = 0;
-      x3 = 0;
-      x4 = 0;
-      y1 = 0;
-      y2 = 0;
-      y3 = 0;
-      y4 = 0;
+      if (ficha1.entrada == false) {
+        x1 = 0;
+        y1 = 0;
+      }
+      if (ficha2.entrada == false) {
+        x2 = 0;
+        y2 = 0;
+      }
+      if (ficha3.entrada == false) {
+        x3 = 0;
+        y3 = 0;
+      }
+      if (ficha4.entrada == false) {
+        x4 = 0;
+        y4 = 0;
+      }
     }
   }
 
@@ -450,7 +582,6 @@ class Jugador {
     if (tablero[(ficha.casilla_actual+Dado)%68][2] == 1 && tablero[(ficha.casilla_actual+Dado)%68][4] == 1) { //si es casilla segura hay bloqueo
       tablero[(ficha.casilla_actual+Dado)%68][3] = 1;
       dibujarBloqueo();
-      print(tablero[(ficha.casilla_actual+Dado)%68][3]);
     } else if (tablero[(ficha.casilla_actual+Dado)%68][2]==0 && tablero[(ficha.casilla_actual+Dado)%68][4]==1) {          // si no es segura se la come
       if (tablero[(ficha.casilla_actual+Dado)%68][5]==1 && ficha.numero_jugador!=1) {
         if (jugador1.ficha1.casilla_actual == ficha.casilla_actual+Dado) {
