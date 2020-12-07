@@ -18,7 +18,7 @@ Jugador jugador1, jugador2, jugador3, jugador4;
 int NumeroJugadores, Turno, Dado1, Dado2, pares;
 int seguro1, seguro2;
 String[] JugadorenTurno = {"Amarillo", "Azul", "Rojo", "Verde"};
-Boolean turnoActual, MoverDado1, MoverDado2;
+Boolean turnoActual, MoverDado1, MoverDado2, avanzarComer;
 
 void setup() {
   NumeroJugadores = 4;
@@ -44,6 +44,8 @@ void setup() {
   if (NumeroJugadores==4) {
     jugador4 = new Jugador(4);
   }
+  
+  avanzarComer = false;
 }
 
 void draw() {
@@ -54,6 +56,7 @@ void draw() {
   jugador2.DibujarFichas();
   jugador3.DibujarFichas();
   jugador4.DibujarFichas();
+<<<<<<< HEAD
 
 
   dibujarBloqueo();
@@ -61,11 +64,16 @@ void draw() {
   
 
 
+=======
+>>>>>>> 11c46583b3feed6de4e7ad505fbbbaacb29e6e8d
   
   Seguros();
   dibujarBloqueo();
   
+<<<<<<< HEAD
 
+=======
+>>>>>>> 11c46583b3feed6de4e7ad505fbbbaacb29e6e8d
   if (MoverDado1 == false) {
     fill(#804000);
     square(732, 55, 90);
@@ -73,6 +81,18 @@ void draw() {
   if (MoverDado2 == false) {
     fill(#804000);
     square(857, 55, 90);
+  }
+  
+  if (avanzarComer == true){
+    push();
+    strokeWeight(2);
+    fill(#ffffff);
+    rect(732, 177, 215, 80);
+    fill(0, 0, 0);
+    textSize(20);
+    text("Selecciona una ficha", 740, 210);
+    text("y avanza 20 espacios", 740, 230);
+    pop();
   }
 
   textSize(64);                                       //Escribimos el valor de los dados
@@ -105,6 +125,19 @@ void keyPressed() {
       tablero[seguro2+51][2]=0;
       seguro1=(int)random(16)+1;  
       seguro2=(int)random(16)+1;
+<<<<<<< HEAD
+=======
+      System.out.println(seguro1);
+      System.out.println(seguro2);
+      tablero[seguro1][2]=1;
+      tablero[seguro2][2]=1;
+      tablero[seguro1+17][2]=1;
+      tablero[seguro2+17][2]=1;
+      tablero[seguro1+34][2]=1;
+      tablero[seguro2+34][2]=1;
+      tablero[seguro1+51][2]=1;
+      tablero[seguro2+51][2]=1;
+>>>>>>> 11c46583b3feed6de4e7ad505fbbbaacb29e6e8d
     }
     if (Turno % NumeroJugadores == 0 ) {                 //Con el módulo del turno entre los jugadores sabemos quien tira los dados 
       jugador1.TirarDados();
